@@ -35,7 +35,6 @@ class Root extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.app.user,
-  // loading: state.app.loading,
 });
 
 const mapDispatchToProps = {

@@ -1,15 +1,16 @@
 import * as actionTypes from '../actions/ui/types';
 
 const initialState = {
-  usStates: undefined,
-  sportTypes: undefined,
-  relationshipTypes: undefined,
-  organizationTypes: undefined,
-  programTypes: undefined,
-  governingBodies: undefined,
-  documentTypes: undefined,
-  emailTypes: undefined,
+  us_states: undefined,
+  sport_types: undefined,
+  relationship_types: undefined,
+  organization_types: undefined,
+  program_types: undefined,
+  governing_bodies: undefined,
+  document_types: undefined,
+  email_types: undefined,
   formFieldTypes: undefined,
+  affiliates: undefined,
 };
 
 const reducer = ( state = initialState, action ) => {
@@ -30,55 +31,61 @@ const reducer = ( state = initialState, action ) => {
     case actionTypes.UI_SET_US_STATES:
       return {
         ...state,
-        usStates: action.payload,
+        us_states: action.payload.us_states,
       };
 
     case actionTypes.UI_SET_SPORT_TYPES:
       return {
         ...state,
-        sportTypes: action.payload,
+        sport_types: action.payload.sport_types,
       };
 
     case actionTypes.UI_SET_RELATIONSHIP_TYPES:
       return {
         ...state,
-        relationshipTypes: action.payload,
+        relationship_types: action.payload.relationship_types,
       };
 
     case actionTypes.UI_SET_ORGANIZATION_TYPES:
       return {
         ...state,
-        organizationTypes: action.payload,
+        organization_types: action.payload.organization_types,
       };
 
     case actionTypes.UI_SET_PROGRAM_TYPES:
       return {
         ...state,
-        programTypes: action.payload,
+        program_types: action.payload.program_types,
       };
 
     case actionTypes.UI_SET_GOVERNING_BODIES:
       return {
         ...state,
-        governingBodies: action.payload,
+        governing_bodies: action.payload.governing_bodies,
       };
 
     case actionTypes.UI_SET_DOCUMENT_TYPES:
       return {
         ...state,
-        documentTypes: action.payload,
+        document_types: action.payload.document_types,
       };
 
     case actionTypes.UI_SET_EMAIL_TYPES:
       return {
         ...state,
-        emailTypes: action.payload,
+        email_types: action.payload.email_types,
       };
 
     case actionTypes.UI_SET_FORM_FIELD_TYPES:
       return {
         ...state,
-        formFieldTypes: action.payload,
+        form_field_types: action.payload.form_field_types,
+      };
+
+    case actionTypes.UI_SET_AFFILIATES:
+      return {
+        ...state,
+        affiliates: action.payload.affiliates,
       };
 
     default:

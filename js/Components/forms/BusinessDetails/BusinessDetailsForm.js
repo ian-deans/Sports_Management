@@ -1,22 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Form, Input, TextArea } from "semantic-ui-react";
-import { Button, USStatesDropdown, FileUpload } from "../../common";
+import { Button, FileUpload } from "../../common";
+import { AffiliatesDropdown, USStatesDropdown, SportTypesDropdown } from "../../common/Dropdown";
 import { updateField } from "../../../actions/forms";
 
 const BUSINESS_DETAILS = "BUSINESS_DETAILS";
 
 const BusinessDetailsForm = ({data, updateField, save, saving}) => {
-  // let saving = false;
 
   const handleChange = (event, data) => {
-    console.log(data);
     updateField(BUSINESS_DETAILS, data.name, data.value);
   };
 
-  // const _save = () => {
-  //   saving = true;
-  // }
   return (
     <Form className="component-form-business-details">
       <div className="area-top">
@@ -53,13 +49,11 @@ const BusinessDetailsForm = ({data, updateField, save, saving}) => {
           placeholder="City"
         />
         
-        {/* Replace with US States Dropdown */}
-        <Input
-          onChange={handleChange}
-          value={data.address_state_code || ""}
+        <USStatesDropdown
           name="address_state_code"
-          placeholder="State"
+          value={data.address_state_code || 1}
         />
+
         <Input
           onChange={handleChange}
           value={data.address_zip || ""}
@@ -67,18 +61,18 @@ const BusinessDetailsForm = ({data, updateField, save, saving}) => {
           placeholder="Zip"
         />
 
-        {/* swap for a dropdown component */}
-        <Input
+        <SportTypesDropdown
           onChange={handleChange}
-          value={data.sport_id || ""}
+          value={data.sport_id}
           name="sport_id"
-          placeholder="Sport"
         />
-        <Input
+
+        <AffiliatesDropdown
           onChange={handleChange}
-          name="affliation"
-          placeholder="Affiliation"
+          value={undefined}
+          name="affiliation"
         />
+
         <Input
           onChange={handleChange}
           value={data.tax_id || ""}

@@ -199,6 +199,10 @@ export default {
 
     getFormFieldTypes: () =>
       window.cinchFetch.getUIData(urls.FORM_FIELD_TYPES)
-        .then(formatUIData)
+        .then(formatUIData),
+    
+    getAffiliationTypes: () => 
+      window.cinchFetch.getUIData(urls.AFFILIATES)
+      .then(formatUIData),
   }
 };
