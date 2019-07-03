@@ -18,49 +18,54 @@ export const unsetLoading = () => ( {
   type: actionTypes.UI_UNSET_LOADING,
 } );
 
-export const setUSStates = states => ( {
+export const setUSStates = us_states => ( {
   type: actionTypes.UI_SET_US_STATES,
-  payload: states
+  payload: {us_states},
 } );
 
-export const setSportTypes = sportTypes => ( {
+export const setSportTypes = sport_types => ( {
   type: actionTypes.UI_SET_SPORT_TYPES,
-  payload: sportTypes,
+  payload: {sport_types},
 } );
 
-export const setRelationshipTypes = relationshipTypes => ( {
+export const setRelationshipTypes = relationship_types => ( {
   type: actionTypes.UI_SET_RELATIONSHIP_TYPES,
-  payload: relationshipTypes,
+  payload: {relationship_types},
 } );
 
-export const setOrganizationTypes = organizationTypes => ( {
+export const setOrganizationTypes = organization_types => ( {
   type: actionTypes.UI_SET_ORGANIZATION_TYPES,
-  payload: organizationTypes,
+  payload: {organization_types},
 } );
 
-export const setProgramTypes = programTypes => ( {
+export const setProgramTypes = program_types => ( {
   type: actionTypes.UI_SET_PROGRAM_TYPES,
-  payload: programTypes,
+  payload: {program_types},
 } );
 
-export const setGoverningBodies = governingBodies => ( {
+export const setGoverningBodies = governing_bodies => ( {
   type: actionTypes.UI_SET_GOVERNING_BODIES,
-  payload: governingBodies,
+  payload: {governing_bodies},
 } );
 
-export const setDocumentTypes = documentTypes => ( {
+export const setDocumentTypes = document_types => ( {
   type: actionTypes.UI_SET_DOCUMENT_TYPES,
-  payload: documentTypes,
+  payload: {document_types},
 } );
 
-export const setEmailTypes = emailTypes => ( {
+export const setEmailTypes = email_types => ( {
   type: actionTypes.UI_SET_EMAIL_TYPES,
-  payload: emailTypes,
+  payload: {email_types},
 } );
 
-export const setFormFieldTypes = formFieldTypes => ( {
+export const setFormFieldTypes = form_field_types => ( {
   type: actionTypes.UI_SET_FORM_FIELD_TYPES,
-  payload: formFieldTypes,
+  payload: {form_field_types},
+} );
+
+export const setAffiliates = affiliates => ( {
+  type: actionTypes.UI_SET_AFFILIATES,
+  payload: {affiliates},
 } );
 
 
@@ -129,5 +134,9 @@ export const fetchEmailTypes = () =>
 export const fetchFormFieldTypes = () =>
   async dispatch => dispatch(
     setFormFieldTypes( await API.ui.getFormFieldTypes() )
+  );
+export const fetchAffiliates = () =>
+  async dispatch => dispatch(
+    setAffiliates( await API.ui.getAffiliationTypes() )
   );
 

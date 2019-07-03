@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { updateField } from "../../../actions/forms";
 import { Form, Input, Message } from 'semantic-ui-react';
 import { Button } from "../../common";
+import { USStatesDropdown } from "../../common/Dropdown";
 
 const LEGAL_REPRESENTATIVE = "LEGAL_REPRESENTATIVE";
 
@@ -39,18 +40,22 @@ const LegalRepresntativeForm = ({ data, error, updateField, save, saving }) => {
           <div className="inline-group">
 
             <Input
+              style={{maxWidth: "200px"}}
               value={data.address_city || ""}
               onChange={handleChange}
               name="address_city"
               placeholder="City"
-            />
-            <Input
-              value={data.address_state_code || ""}
+              />
+            <USStatesDropdown
+              style={{minWidth: "150px"}}
+              value={data.address_state_code}
               onChange={handleChange}
               name="address_state_code"
               placeholder="State"
             />
+
             <Input
+              style={{maxWidth: "100px"}}
               value={data.address_zip || ""}
               onChange={handleChange}
               name="address_zip"

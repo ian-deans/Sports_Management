@@ -1,5 +1,5 @@
 import * as actionTypes from "./types";
-import { setUSStates, setSportTypes, setProgramTypes, setRelationshipTypes } from "../ui";
+import { setUSStates, setSportTypes, setProgramTypes, setRelationshipTypes, setAffiliates } from "../ui";
 import API from "../../API/Api";
 
 
@@ -48,15 +48,19 @@ export const loadUIData = () =>
       API.ui.getUSStates(),
       API.ui.getSportTypes(),
       API.ui.getRelationshipTypes(),
-      API.ui.getProgramTypes()
+      API.ui.getProgramTypes(),
+      API.ui.getAffiliationTypes()
     ];
 
-    const [usStates, sportTypes, relationshipTypes, programTypes] = await Promise.all(promises);
+    const [usStates, sportTypes, relationshipTypes, programTypes, affiliates] = await Promise.all(promises);
 
     dispatch(setUSStates(usStates.data));
     dispatch(setSportTypes(sportTypes.data));
     dispatch(setRelationshipTypes(relationshipTypes.data));
     dispatch(setProgramTypes(programTypes.data));
+    console.log('AFFILIATES::')
+    console.log(affiliates)
+    dispatch(setAffiliates(affiliates.data));
   };
 
 export const logout = () =>

@@ -39,6 +39,7 @@ export default {
   DOCUMENT_TYPES: "/document-types",
   EMAIL_TYPES: "/email-types",
   FORM_FIELD_TYPES: "/form_field_types",
+  AFFILIATES: "/affiliates",
 
 
   ADDRESSES,

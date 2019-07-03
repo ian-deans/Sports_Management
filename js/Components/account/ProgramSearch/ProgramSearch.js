@@ -148,7 +148,7 @@ class ProgramSearch extends React.Component {
 
 const mapStateToProps = state => ({
   programTypes: state.ui.programTypes,
-  sportTypes: state.ui.sportTypes,
+  sportTypes: state.ui.sport_types,
 });
 
 const mapDispatchToProps = {

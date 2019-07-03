@@ -5,8 +5,10 @@ const initialState = {
   organization_data: null,
   dashboard_stats: {},
   programs: [],
-  registrations: [],
+  registrations: {},
   registration_id: [],
+  payment_methods: {},
+  payment_method_ids: [],
 };
 
 const reducer = (state = initialState, action) => {
