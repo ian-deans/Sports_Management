@@ -1,0 +1,85 @@
+/*******************************
+        Site Overrides
+*******************************/
+
+.ui.grid > .column:not(.row) {
+  padding: 0px;
+}
+
+// .ui.centered.middle.aligned.grid.cinch-login-grid {
+//   height: 100vh;
+//   background-image: url("/images/landing-background.png");
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   min-width: @appMinWidth;
+// }
+
+// Root
+.ui.grid.cinch {
+  padding: 0px;
+  margin: 0px;
+
+  // Base Row Style
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .column.sidebar-spacer {
+    width: 10%;
+    min-width: 40px;
+  }
+
+  .cinch-side-column {
+    position: fixed;
+    z-index: 100;
+    left: 0px;
+    top: 0px;
+    min-width: 50px;
+    height: 100vh;
+    max-height: 100%;
+  }
+
+  .cinch-main-column {
+    width: 100%;
+    align-items: center;
+
+    &.in-hq {
+      margin-left: 4em !important;
+    }
+    .grid {
+      width: 100%;
+    }
+
+    // Account Section
+    .grid.account-page {
+        justify-content: space-around;
+
+      >.column:first-child {
+        width: 20%;
+        max-width: 165px;
+        // padding-right: 1em;
+      }
+      >.column:last-child {
+        width: 75%
+      }
+    
+      // Account > Home
+      .account-home-dashboard {
+        >.column {
+          width: 75%;
+          margin-right: 1em;
+          height: 100%;
+        }
+        .column:last-child {
+          height: 100%;
+          width: 25%;
+        }
+      }
+    }
+  }
+}

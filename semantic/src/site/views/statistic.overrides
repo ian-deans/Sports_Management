@@ -1,0 +1,18 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+
+// Active Organization Stat
+.ui.tiny.statistic.cinch.org-stat {
+    // border-right: solid black 1px;
+    margin: 0px;
+    padding: 1em;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.ui.statistics.cinch.org-stat:last-child {
+    // border-right: none;
+    // border-left: solid black 1px;
+}

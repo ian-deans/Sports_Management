@@ -1,0 +1,51 @@
+
+
+@financialPanelHeight: 18em;
+
+.component-account-financials {
+
+  &-saved-cards,
+  &-new-card {
+    height: @financialPanelHeight;
+    width: 100%
+  }
+
+  &-saved-cards {
+    padding-left: 1em;
+  }
+
+  &-new-card {
+    padding-right: 1em;
+  }
+}
+
+.component-account-upload-documents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+}
+
+.component-account-saved-payment-methods {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+
+}
+
+.component-account-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1em 2em;
+  margin-top: 1em;
+
+  background-color: @white;
+  border-radius: @borderRadius;
+
+  &.active {
+    background-color: @selectedItem;
+    color: @white;
+  }
+}

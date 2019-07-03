@@ -1,0 +1,174 @@
+/*
+  
+  Styling for the account section layout
+
+*/
+
+
+@padding: 2em;
+
+
+.section.account {
+
+  .main {
+    // height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    // padding: 0 @padding 0 @padding;
+  }
+
+  .nav {
+    height: 50%;
+    width: 20%;
+    padding-right: @padding;
+  }
+}
+
+.section.account .page.account {
+  &-home {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: auto auto auto;
+    grid-gap: @padding 0;
+    grid-template-areas:
+      "search quick-add"
+      "document-feed quick-add"
+      "financial-feed .";
+    justify-items: stretch;
+    align-items: stretch;
+
+    .area {
+      &-program-search {
+        grid-area: search;
+      }
+
+      &-document-feed {
+        grid-area: document-feed;
+      }
+
+      &-financial-feed {
+        grid-area: financial-feed;
+      }
+
+      &-quick-add {
+        grid-area: quick-add;
+        padding-left: @padding;
+      }
+    }
+  }
+
+  // &-household {}
+
+  &-financials {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: max-content auto;
+    grid-gap: @padding 0;
+    grid-template-areas:
+      "new-cards saved-cards"
+      "order-history order-history";
+    justify-items: stretch;
+    align-items: stretch;
+
+    .area {
+      &-new-card {
+        grid-area: new-cards;
+        padding-right: 1em;
+      }
+
+      &-saved-cards {
+        grid-area: saved-cards;
+        padding-left: 1em;
+      }
+
+      &-order-history {
+        grid-area: order-history;
+      }
+    }
+  }
+
+  &-programs {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    .area {
+      &-programs-search {
+        margin-bottom: @padding;
+      }
+
+      &-programs-content {
+        .page.account-programs-details {
+          display: grid;
+          grid-template-columns: 50% 50%;
+          grid-template-rows: auto auto max-content auto;
+          grid-template-areas:
+            "header header"
+            "desc desc"
+            "details map"
+            "buttons buttons";
+          justify-items: stretch;
+          align-items: flex-start;
+          grid-gap: 1em;
+
+          .area {
+            &-header {
+              grid-area: header;
+            }
+
+            &-description {
+              grid-area: desc;
+            }
+
+            &-details {
+              grid-area: details;
+            }
+
+            &-map {
+              grid-area: map;
+            }
+
+            &-buttons {
+              grid-area: buttons;
+            }
+          }
+        }
+        
+        .page.account-programs-register {
+          display: grid;
+          grid-template-columns: 100%;
+          grid-template-rows: min-content auto max-content;
+          grid-gap: 1em 0;
+          grid-template-areas:
+            "step-indicator"
+            "main"
+            "navigation";
+
+          justify-items: stretch;
+          align-items: stretch;
+
+          .area {
+            &-step-indicator {
+              grid-area: step-indicator;
+              align-content: center;
+            }
+
+            &-step-main {
+              grid-area: main;
+            }
+
+            &-step-navigation {
+              grid-area: navigation;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  // &-documents {}
+}

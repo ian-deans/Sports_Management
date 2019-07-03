@@ -1,0 +1,15 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.saved-payment-methods {
+  padding: 1em;
+
+  .payment-methods-list-container {
+    overflow: auto;
+
+    .list {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@background: #FFF;
+@borderRadius: 8px;
+@boxShadow:  0 2px 5px rgba(0, 0, 0, 0.05);
+
+
+@width: 100%;
+
+@panelMarginBottom: 2em;
+@cinchPanelWidth: 100%;
+
+@panelHeaderPadding: 1em;
+
+// Panel Header
+@panelHeaderPadding: .5em 0em .5em 2em;
+@panelHeaderFontSize: @h3;
+@panelHeaderFont: @headerFont;
+
+// ToolBar
+@toolbarMinHeight: 40px;
+@toolbarMaxHeight: 40px;
+
+@toolbarMenuMarginRight: 1em;
+
+/* Player Registration */
+
+/* DocumentBar */
+@completedBorder: solid #BADA55 2px;
+@incompletedBorder: solid #ff3300 2px;

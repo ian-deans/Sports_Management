@@ -1,0 +1,11 @@
+/*******************************
+        User Overrides
+*******************************/
+
+.ui.selection.dropdown.cinch-dropdown {
+        max-height: 35px;
+};
+
+.ui.dropdown:not(.button) >.default.text {
+        color: @pageFontColor;
+}

@@ -1,0 +1,73 @@
+
+
+@padding: 1em;
+@formMinHeight: 40em;
+
+
+.component-file-upload {
+  height: 11em;
+  width: 11em;
+  border: solid gray 1px;
+  padding: @padding;
+}
+
+.component-form-business-details {
+  min-height: @formMinHeight;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 3fr 2fr 2fr 1fr;
+  grid-template-areas:
+    "top top top side"
+    "middle middle middle side"
+    "bottom bottom bottom side"
+    "buttons buttons buttons buttons";
+
+  justify-content: stretch;
+  align-items: stretch;
+
+  .area {
+    &-top {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      grid-area: top;
+    }
+
+    &-middle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      grid-area: middle;
+    }
+
+    &-bottom {
+      display: flex;
+      justify-content: stretch;
+      align-content: stretch;
+
+      grid-area: bottom;
+    }
+
+    &-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+
+      grid-area: side;
+    }
+
+    &-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+
+      grid-area: buttons;
+    }
+  }
+}

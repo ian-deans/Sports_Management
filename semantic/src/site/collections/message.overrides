@@ -1,0 +1,7 @@
+/*******************************
+        Site Overrides
+*******************************/
+
+.ui.menu.account-nav-menu .account-nav-menu-item {
+        min-height: 1em;
+}

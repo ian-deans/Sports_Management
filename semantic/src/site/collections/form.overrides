@@ -1,0 +1,84 @@
+/*******************************
+        Site Overrides
+*******************************/
+
+// Base Form Styling
+.ui.form {
+  margin: 1em;
+
+  .fields {
+    // margin: 0 0 0 1em;
+  }
+
+  &.inline.fields {
+    width: 100%;
+  }
+}
+
+// Save Credit/Debit Card
+.ui.form.save-new-payment-card-form {
+  min-width: 300px;
+  min-height: 170px;
+  max-height: 175px;
+
+  // Stripe "Card"Element
+  #stripe-card-container {
+    min-height: 50px;
+
+    .StripeElement {
+      min-height: 35px;
+      font-family: @pageFont;
+      font-size: @fontSize;
+      border: 1px solid rgba(34, 36, 38, 0.15);
+      border-radius: 0.33333333rem;
+      line-height: 1.21428571em;
+      padding: 0.75em;
+
+      .ElementsApp {
+        line-height: 2em;
+      }
+    }
+  }
+}
+
+// Add New Member To Household
+.ui.form.add-new-member-form {
+  .inline.two.fields {
+    width: 100%;
+  }
+}
+
+// Program Search
+.ui.form.program-search-form {
+  width: 100%;
+  font-size: 11px;
+
+  .main-group {
+    display: flex;
+    justify-content: space-between;
+
+    .organization-name-field:first-child {
+      .organization-name-input {
+        width: 75%;
+      }
+    }
+
+    .fields {
+      display: flex;
+      justify-content: space-around;
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+    }
+
+    .search-submit-field:last-child {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}

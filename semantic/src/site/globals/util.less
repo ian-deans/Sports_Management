@@ -1,0 +1,98 @@
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: @pageFontColor;
+}
+
+html {
+  font-size: @fontSize !important;
+  background-color: @pageBackground;
+}
+
+.buffer {
+  margin: var(--sizes);
+}
+
+.buffer-top {
+  margin-top: 1em !important;
+}
+.buffer-bottom {
+  margin-bottom: 1em !important;
+}
+.buffer-left {
+  margin-left: 1em !important;
+}
+.buffer-right {
+  margin-right: 1em !important;
+}
+
+.full-width {
+  width: 100%;
+}
+.half-width {
+  width: 50%;
+}
+
+.full-height {
+  height: 100%;
+}
+.half-height {
+  height: 50%;
+}
+
+// Flexbox classes
+
+.centered-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexbox {
+  display: flex !important;
+  
+  &.column {
+    flex-direction: column;
+
+    &-reverse {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &.justified {
+    &-center {
+      justify-content: center;
+    }
+    &-space-between {
+      justify-content: space-between;
+    }
+    &-space-around {
+      justify-content: space-around;
+    }
+    &-evenly {
+      justify-content: space-evenly;
+    }
+    &-start {
+      justify-content: flex-start;
+    }
+    &-end {
+      justify-content: flex-end;
+    }
+  }
+
+  &.aligned {
+    &-center {
+      align-items: center;
+    }
+    &-start {
+      align-items: flex-start;
+    }
+    &-end {
+      align-items: flex-end;
+    }
+
+  }
+}

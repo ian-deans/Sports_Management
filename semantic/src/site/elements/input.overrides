@@ -1,0 +1,18 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.ui.input.cinch-input {
+  &.zipcode {
+    width: 6em !important;
+  }
+
+  &.organization-name-input {
+    input, input:active, input:focus {
+      border-radius: 25px;
+      &::placeholder {
+        content: 'Organization'
+      }
+    }
+  }
+};

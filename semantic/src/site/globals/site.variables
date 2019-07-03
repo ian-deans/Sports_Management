@@ -1,0 +1,56 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@black:                  #0d0d0d;
+@blue:                   #1a75ff;
+@gray:                   #898989 ;
+@darkGray:               #898989 ;
+@grey:                   #ccc ;
+@lightGray:              #ccc;
+@offWhite:               #fafafa;
+// @offWhite:               #afaafa;
+@white:                  #fff;
+@selectedItem:           #53c044;
+
+
+
+@fontName:               'Roboto';
+@fontSmoothing:          antialiased;
+
+@headerFont:             @fontName, 'Roboto Bold', sans-serif;
+@pageFont:               @fontName, 'Arial', sans-serif;
+
+@fontSize:               12px;
+@emSize:                 10px;
+@borderRadius:           8px;
+
+@importGoogleFonts:      true;
+@googleFontName:         @fontName;
+@importGoogleFonts:      true;
+@googleFontSizes:        '400,500,700';
+@googleProtocol:         'https://';
+@googleFontRequest:      '@{googleFontName}:@{googleFontSizes}&subset=@{googleSubset}';
+@bold:                   bold;
+
+@normal:                 normal;
+@pageFontColor:          @gray;
+@textColor:              @gray;
+@linkColor:              @gray;
+
+@pageHeight:             100vh;
+@pageWidth:              100vw;
+@pageMinWidth:           280px;
+@pageBackground:         @offWhite;
+
+
+@appWidth:               auto;
+@appMinWidth:            1200px;
+@appMaxWidth:            1340px;
+@appMargin:              0 auto;
+
+@loginFormMinWidth:      350px;
+@panelBackground:        @white;
+
+
+

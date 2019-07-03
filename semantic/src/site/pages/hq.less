@@ -1,0 +1,183 @@
+@padding: 1em;
+
+
+
+.section.hq {
+  .main {
+    width: 100%;
+    padding: 0 @padding;
+  }
+}
+
+.section.hq .page.hq {
+  &-home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-gap: @padding 0;
+    grid-template-areas:
+      "stats stats"
+      "graph graph"
+      "registrations .";
+    justify-content: stretch;
+    align-items: flex-start;
+
+    .area {
+      &-stats {
+        grid-area: stats;
+      }
+
+      &-graph {
+        grid-area: graph;
+      }
+
+      &-registrations {
+        grid-area: registrations;
+      }
+    }
+  }
+}
+
+.section.hq {
+  .main {
+    // height: 100%;
+    width: 100%;
+    padding: 0 @padding;
+  }
+}
+
+.section.hq .page.hq {
+  &-home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-gap: @padding 0;
+    grid-template-areas:
+      "stats stats"
+      "graph graph"
+      "registrations .";
+    justify-content: stretch;
+    align-items: flex-start;
+
+    .area {
+      &-stats {
+        grid-area: stats;
+      }
+
+      &-graph {
+        grid-area: graph;
+      }
+
+      &-registrations {
+        grid-area: registrations;
+      }
+    }
+  }
+
+
+  // &-programs {}
+  &-households {
+    .area {
+      &-nav {
+        margin-bottom: @padding;
+      }
+
+      &-main {
+        .page.hq {
+          &-family-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: max-content min-content min-content;
+            grid-gap: @padding;
+            grid-template-areas:
+              "info notes"
+              "members members"
+              "contacts contacts";
+            justify-items: stretch;
+            align-items: stretch;
+
+            .area {
+              &-info {
+                grid-area: info;
+              }
+
+              &-notes {
+                grid-area: notes;
+              }
+
+              &-members {
+                grid-area: members;
+              }
+
+              &-contacts {
+                grid-area: contacts;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+
+  // &-registrations {}
+  // &-organization-setup {
+  //   flex-direction: row;
+  //   justify-content: stretch;
+  //   align-items: stretch;
+  //   .area {
+  //     &-nav {
+  //       width: 20%;
+  //     }
+
+  //     &-main {
+  //       width: 80%;
+  //       padding-left: @padding * 2;
+
+  //       .organization-setup-main {
+  //         min-height: 75vh !important;
+  //       }
+
+  //       .business-details-form {
+
+  //         grid-template-columns: 1fr 1fr 1fr 1fr;
+  //         grid-template-rows: 3fr 2fr 2fr 1fr;
+  //         grid-gap: @padding;
+  //         grid-template-areas:
+  //         "top top top side"
+  //         "middle middle middle side"
+  //         "bottom bottom bottom side"
+  //         "buttons buttons buttons buttons";
+  //         justify-items: stretch;
+  //         align-items: stretch;
+
+  //         // height: 100%;
+
+  //         .area {
+  //           &-top {
+  //             grid-area: top;
+  //             background-color: blue;
+  //           }
+  //           &-middle {
+  //             grid-area: middle;
+  //             background-color: blue;
+  //           }
+  //           &-bottom {
+  //             grid-area: bottom;
+  //             background-color: blue;
+  //           }
+  //           &-side {
+  //             grid-area: side;
+  //             background-color: blue;
+  //           }
+  //           &-buttons  {
+  //             grid-area: buttons;
+  //             background-color: blue;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+}

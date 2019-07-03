@@ -1,0 +1,6 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+@selectionMinWidth: 60px;
+@selectionMinHeight: auto;
+@defaultTextColor: @pageFontColor;

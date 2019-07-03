@@ -1,0 +1,214 @@
+/*******************************
+        Site Overrides
+*******************************/
+
+/*********** Panel ***********/
+
+.ui.segment,
+.ui.segments,
+.segment {
+  font-size: @fontSize !important;
+}
+
+// Placeholder Components
+.ui.placeholder.center.aligned.segment {
+  &.saved-payment-cards-list {
+    max-height: 110px;
+    min-height: 50px;
+    min-width: 100%;
+    height: 100%;
+  }
+}
+
+// Base Panel Style
+.ui.segment.panel,
+.ui.segments.panels {
+  // margin-bottom: @panelMarginBottom;
+  // width: @cinchPanelWidth;
+  width: 100%;
+  box-shadow: @boxShadow;
+  background: @background;
+  min-height: 40px;
+  font-size: @fontSize;
+
+  border: none;
+
+  .panel-image {
+    margin-right: 2em;
+  }
+
+  .panel-header-container {
+    font-size: @panelHeaderFontSize;
+    padding: 1em 2em 1em 2em;
+    font-family: @panelHeaderFont;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  // Account > Home > QuickAddPanel
+  &.quick-add-panel {
+    .quick-add-link {
+      &:hover {
+        color: @black;
+      }
+      > div {
+        > img {
+          margin-right: 1em;
+        }
+      }
+    }
+  }
+
+  // Account > Financial > PaymenthMethodsDash > SavedPaymentMethods
+  // .saved-payment-methods {
+  //   display: flex;
+  //   flex-direction: column;
+  //   max-height: 175px;
+  //   min-height: 170px;
+  //   width: 100%;
+  //   height: 100%;
+
+  //   .row:first-child {
+  //     height: 100%;
+  //   }
+  //   .row:last-child {
+  //     min-height: 34px;
+  //   }
+  // }
+
+  // Account > Home > DocumentFeed
+  &.new-documents-feed {
+    .new-documents-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2em 3em 2em 3em;
+
+      .document-details-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        max-width: 75% !important;
+        .document-details {
+          margin-left: 2em;
+        }
+      }
+    }
+  }
+
+  &.documentbar {
+    border: @incompletedBorder;
+    margin-bottom: 0px;
+
+    div:first-child {
+      width: 80%;
+      padding: 1em;
+    }
+    div:last-child {
+      width: 20%;
+      padding: 1em;
+    }
+    &.completed {
+      border: @completedBorder;
+    }
+  }
+
+  .panel-header-container.table-header {
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      min-height: @toolbarMinHeight;
+      max-height: @toolbarMaxHeight;
+      width: 100%;
+
+      .tool-bar-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .tool-bar-menu > * {
+        margin-right: @toolbarMenuMarginRight;
+      }
+    }
+  }
+
+  .panel-item {
+    &.quick-add-link {
+      display: flex;
+      justify-content: space-between;
+      > span > i {
+        margin-right: 1em;
+      }
+    }
+  }
+
+  .program-registration-indicators {
+    max-width: 480px;
+
+    .program-registration-indicator {
+    }
+  }
+}
+
+.ui.segments.panels {
+  .panel-item {
+    .panel-subitem {
+      margin: 5px;
+    }
+  }
+}
+
+// Organization Stats Dashboard
+.ui.raised.segment.panel.organization-stats-dash {
+  min-height: 12em;
+  padding: 2em;
+
+  .dash-stat {
+    border-right: solid grey 1px;
+    width: 25%;
+  }
+
+  > .dash-stat:last-child {
+    border-right: none;
+  }
+}
+
+.cinch-quick-add-panel {
+  max-width: 200px;
+}
+.ui.segment.panel.cinch-navbar {
+  height: 7em;
+  padding: 1em 2em 1em 2em;
+}
+.ui.circular.segment.cinch.circular-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  width: 60px;
+  height: 60px;
+}
+
+/* HQ Navigation Sidebar */
+
+.ui.raised.segment.panel.hq-sidebar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 10%;
+  min-width: 40px;
+  max-width: 60px;
+
+  .sidebar-link {
+    margin: 0 0 2em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

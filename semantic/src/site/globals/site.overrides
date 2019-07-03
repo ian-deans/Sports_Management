@@ -1,0 +1,110 @@
+/******************************
+        Site Overrides
+*******************************/
+
+& {
+  @import "util";
+  @import "../pages/app";
+  @import "../pages/account";
+  @import "../pages/hq";
+}
+
+& {
+  @import "../components/app";
+  @import "../components/account";
+  @import "../components/hq";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.page.login {
+  height: 100vh;
+  background-image: url("/images/backgrounds/background-1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: @loginFormMinWidth;
+  justify-content: center;
+}
+
+
+@padding: 1em;
+@formMinHeight: 40em;
+
+
+.page.organization-setup {
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: stretch;
+  max-height: 90vh;
+
+  .area {
+    &-nav {
+      width: 20%;
+    }
+
+    &-main {
+      width: 80%;
+      padding-left: @padding * 2;
+
+      .organization-setup-main {
+      }
+    }
+  }
+}
+
+
+.component-form-legal-representative {
+  min-height: @formMinHeight;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 7fr 1fr 1fr;
+  grid-template-areas:
+    "inputs inputs ."
+    ". . ."
+    "buttons buttons buttons";
+  
+  justify-content: stretch;
+  align-content: stretch;
+
+  .area {
+    &-inputs {
+      grid-area: inputs;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-around;
+      align-content: space-around;
+
+      .input {
+        width: 100%;
+      }
+
+      .inline-group {
+        width: 75%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .input {
+          margin-right: 1em;
+        }
+
+        &.full {
+          width: 75%;
+        }
+      }
+    }
+
+    &-buttons {
+      grid-area: buttons;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

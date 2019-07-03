@@ -1,0 +1,11 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.ui.steps.player-registration-steps {
+  &:first-child {
+    margin-top: 1em;
+    width: 100%;
+    justify-content: center;
+  }
+}

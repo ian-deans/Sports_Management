@@ -1,0 +1,13 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@verticalBoxShadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+@border: solid #FAFAFA 2px;
+@background: #FAFAFA;
+
+@activeItemTextColor: #000;
+@activeItemFontWeight: 700;
+@activeItemBackground: none;
+
+

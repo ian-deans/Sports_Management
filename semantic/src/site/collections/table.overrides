@@ -1,0 +1,51 @@
+/*******************************
+        Site Overrides
+*******************************/
+
+ui.table {
+  font-size: @fontSize;
+}
+
+
+.ui.table.cinch.table {
+    border: none;
+
+    thead {
+      tr {
+        width: 100%;
+        height: 2px;
+      }
+      th {
+        background-color: #FFF;
+        border: none;
+      }
+    }
+    tbody {
+      td {
+        overflow: visible;
+      }
+    }
+
+    .panel-header {
+      padding: 0em;
+
+      .toolbar {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .tool-bar-menu {
+          display: flex;
+          justify-content: space-evenly;
+        }
+      }
+    }
+}
+
+.ui.table > thead {
+  background: @panelBackground;
+  tr > thead {
+    border: none;
+  }
+
+}
