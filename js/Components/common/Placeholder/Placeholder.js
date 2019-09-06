@@ -1,9 +1,9 @@
-import React from 'react';
-import { Segment } from 'semantic-ui-react';
+import React from "react";
+import { Segment } from "semantic-ui-react";
 
-const PlaceHolder = ({ message, className }) => (
-  <Segment placeholder textAlign="center" className={className}>
-    {message}
+const PlaceHolder = ( { message, className } ) => (
+  <Segment placeholder textAlign="center" className={ className }>
+    { message }
   </Segment>
 );
 

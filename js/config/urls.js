@@ -1,9 +1,9 @@
-export const APP_URL = "/app"
+export const APP_URL = "/app";
 export const LOGIN_URL = "/login";
 export const LOGOUT_URL = "/logout";
 
 // MESSAGE OF THE DAY / LANDING PAGE
-export const MOTD_URL = APP_URL
+export const MOTD_URL = APP_URL;
 
 // ACCOUNT SECTION
 export const ACCOUNT_URL = APP_URL + "/account";

@@ -1,9 +1,7 @@
 import React from "react";
-import { LoginForm } from "../Components/common";
+import { LoginForm } from "../components/common";
 
-const Login = props => {
-
-  // const { loading } = this.state;
+const Login = () => {
   return (
     <div className="page login">
       <div className="area-login-form">

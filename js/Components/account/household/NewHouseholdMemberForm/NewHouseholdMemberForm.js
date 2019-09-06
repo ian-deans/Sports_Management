@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -5,17 +6,18 @@ import { createNewHouseholdMember } from "../../../../actions/account";
 
 import { Divider, Form, Grid } from "semantic-ui-react";
 import { Button, ErrorBoundary, Panel } from "../../../common";
+import { error } from "../../../../helpers/log";
 
 import AddressInfoSection from "./AddressInfoSection";
 import LoginInfoSection from "./LoginInfoSection";
 import PersonalInfoSection from "./PersonalInfoSection";
 import RelationshipSection from "./RelationshipSection";
 
-import { genders } from "../../../../constants/static-data";
+import { genders } from "../../../../config/static-data";
 
 class NewHouseholdMemberForm extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.state = {
       personalData: { ...this.props.initialState.personalData },
       loginData: { ...this.props.initialState.loginData },
@@ -30,51 +32,51 @@ class NewHouseholdMemberForm extends React.Component {
 
   addRelationshipEntry = () => {
     let state = { ...this.state };
-    state.relationships.push({ ...relationshipEntry });
-    this.setState(state);
+    state.relationships.push( { ...relationshipEntry } );
+    this.setState( state );
   };
 
   removeRelationshipEntry = index => {
     let state = { ...this.state };
-    if (this.state.relationships.length > 1) {
-      state.relationships.splice(index, 1)
-      return this.setState(state);
+    if ( this.state.relationships.length > 1 ) {
+      state.relationships.splice( index, 1 );
+      return this.setState( state );
 
-    } else if (this.state.relationships.length === 1) {
+    } else if ( this.state.relationships.length === 1 ) {
       state.relationships = [{ ...relationshipEntry }];
-      return this.setState(state);
+      return this.setState( state );
     }
   };
 
   hasEmptyFields = data => {
-    const success = Object.values(data).map(value => value === "");
-    return success.includes(true);
+    const success = Object.values( data ).map( value => value === "" );
+    return success.includes( true );
   };
 
-  handleChange = (section, data) => {
+  handleChange = ( section, data ) => {
     let state = { ...this.state };
 
-    if (section === "personalData") {
-      if (this.isDateData(data.name)) {
+    if ( section === "personalData" ) {
+      if ( this.isDateData( data.name ) ) {
         state.personalData.birthdate[data.name] = data.value;
       } else {
         state.personalData[data.name] = data.value;
       }
-    } else if (section === "addressData") {
-      if (data.name === "sameAddress") {
+    } else if ( section === "addressData" ) {
+      if ( data.name === "sameAddress" ) {
         state.addressData.sameAddress = data.checked;
       } else {
         state.addressData[data.name] = data.value;
       }
-    } else if (section === "loginData") {
-      if (data.name === "sendInvite") {
+    } else if ( section === "loginData" ) {
+      if ( data.name === "sendInvite" ) {
         state.loginData.sendInvite = data.checked;
       } else {
         state.loginData[data.name] = data.value;
       }
-    } else if (section === "relationshipData") {
-      let fields = data.name.split("_");
-      if (fields[0] === "communications" || fields[0] === "financials") {
+    } else if ( section === "relationshipData" ) {
+      let fields = data.name.split( "_" );
+      if ( fields[0] === "communications" || fields[0] === "financials" ) {
         state.relationships[fields[1]][fields[0]] = data.checked;
       } else {
         state.relationships[fields[1]][fields[0]] = data.value;
@@ -83,35 +85,35 @@ class NewHouseholdMemberForm extends React.Component {
 
     state.error = null;
 
-    this.setState(state);
+    this.setState( state );
   };
 
   handleSubmit = async () => {
     const { personalData, addressData, loginData, relationships } = this.state;
-    
-    if (this.hasEmptyFields(personalData)) {
-      return this.setState({ error: "Some fields were left blank." });
+
+    if ( this.hasEmptyFields( personalData ) ) {
+      return this.setState( { error: "Some fields were left blank." } );
     }
-    
-    if (!addressData.sameAddress && this.hasEmptyFields(addressData)) {
-      return this.setState({ error: "Must supply address information." });
+
+    if ( !addressData.sameAddress && this.hasEmptyFields( addressData ) ) {
+      return this.setState( { error: "Must supply address information." } );
     }
-    
-    this.setState({loading: true});
-    await this.props.createNewHouseholdMember({
+
+    this.setState( {loading: true} );
+    await this.props.createNewHouseholdMember( {
       personalData,
       addressData,
       loginData,
       relationships
-    })
-    .catch( error => {
-      console.error( error );
-      this.setState({ error: 'Error occured while creating new member.'})
-    });
+    } )
+      .catch( err => {
+        error( err );
+        this.setState( { err: "Error occured while creating new member."} );
+      } );
 
-    this.setState({loading: false});
+    this.setState( {loading: false} );
 
-    this.props.history.push("/app/account/household");
+    this.props.history.push( "/app/account/household" );
   };
 
   render() {
@@ -150,7 +152,7 @@ class NewHouseholdMemberForm extends React.Component {
                 <Divider />
 
                 <LoginInfoSection
-                  disabled 
+                  disabled
                   {...loginData}
                   handleChangeFn={this.handleChange}
                 />
@@ -217,14 +219,14 @@ const relationshipEntry = {
 
 const mapStateToProps = state => {
   // try {
-    return {
-      usStates: state.ui.usStates,
-      relationshipTypes: state.ui.relationshipTypes,
-      familyMembers: state.account.root.household_members.map(member => ({
-        id: member.id,
-        name: member.first_name,
-      }))
-    };
+  return {
+    usStates: state.ui.usStates,
+    relationshipTypes: state.ui.relationshipTypes,
+    familyMembers: state.account.root.household_members.map( member => ( {
+      id: member.id,
+      name: member.first_name,
+    } ) )
+  };
   // } catch (error) {
   //   //TODO: Log/Report Error
   //   return {};
@@ -239,5 +241,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(NewHouseholdMemberForm)
+  )( NewHouseholdMemberForm )
 );

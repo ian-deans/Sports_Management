@@ -1,7 +1,7 @@
 import React from "react";
-import { NewHouseholdMemberForm } from "../../../Components/account/household"
+import { NewHouseholdMemberForm } from "../../../components/account/household";
 
-const NewHouseholdMember = props => {
+const NewHouseholdMember = () => {
   return (
     <div className="page account-new-household-member">
       <div className="area-new-household-member-form">
@@ -9,6 +9,6 @@ const NewHouseholdMember = props => {
       </div>
     </div>
   );
-}
+};
 
 export default NewHouseholdMember;

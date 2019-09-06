@@ -1,6 +1,6 @@
-import React from 'react';
-import { Grid } from 'semantic-ui-react';
-import { Panel } from '../index';
+import React from "react";
+import { Grid } from "semantic-ui-react";
+import { Panel } from "../index";
 
 class ErrorBoundary extends React.Component {
   constructor( props ) {
@@ -12,8 +12,8 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError( error ) {
-    console.log( 'Error Caught By ErrorBoundary component' );
-    return { hasError: true, error }
+    console.log( "Error Caught By ErrorBoundary component" );
+    return { hasError: true, error };
   }
 
   componentDidCatch( error, info ) {
@@ -26,10 +26,10 @@ class ErrorBoundary extends React.Component {
       return (
         <Grid.Row>
           <Panel>
-            <p> Error {`${ this.state.error }`} </p>
+            <p> Error { `${ this.state.error }` } </p>
           </Panel>
         </Grid.Row>
-      )
+      );
     }
 
     return this.props.children;

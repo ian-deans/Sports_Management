@@ -1,4 +1,6 @@
-import * as actionTypes from '../actions/app/types';
+
+/* eslint-disable camelcase */
+import * as actionTypes from "../actions/app/types";
 
 const initialState = {
   loading: false,
@@ -13,21 +15,21 @@ const initialState = {
 };
 
 
-const reducer = (state = initialState, action) => {
-  switch(action.type) {
-    
+const reducer = ( state = initialState, action ) => {
+  switch( action.type ) {
+
     case actionTypes.SET_LOADING:
       return {
         ...state,
         loading: true,
       };
-    
+
     case actionTypes.UNSET_LOADING:
       return {
         ...state,
         loading: false,
       };
-    
+
     case actionTypes.SET_USER:
       return {
         ...state,
@@ -35,8 +37,8 @@ const reducer = (state = initialState, action) => {
         user_name: action.payload.user.name,
         user_profile_image_path: action.payload.user.person.profile_image_path,
         loading: true,
-      }
-    
+      };
+
     case actionTypes.SET_HOUSEHOLD_CONTEXT:
       return {
         ...state,
@@ -62,10 +64,10 @@ const reducer = (state = initialState, action) => {
         organization_logo_image_path: action.payload.organization_data.logo_image_path
       };
 
-    
+
     default:
       return state;
-  };
+  }
 };
 
 export default reducer;

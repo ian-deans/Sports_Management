@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Form, Grid, TextArea } from "semantic-ui-react";
+import { Form, TextArea } from "semantic-ui-react";
 import { Button, Panel } from "../../common";
-import { updateHousehold } from "../../../actions/hq"
+import { updateHousehold } from "../../../actions/hq";
 
 //TODO: Add edit/save functionality so org admins can add notes.
 
@@ -14,41 +14,41 @@ class Notes extends React.Component {
     saving: false,
   };
 
-  handleChange = (event, data) => {
-    if (this.state.edit) {
-      this.setState({value: data.value})
+  handleChange = ( event, data ) => {
+    if ( this.state.edit ) {
+      this.setState( {value: data.value} );
     }
   };
 
   handleSaveChanges = async () => {
     const id = this.props.id;
     const notes = this.state.value;
-    this.setState({saving: true});
+    this.setState( {saving: true} );
     // try {
-      await this.props.updateHousehold({id, notes})
+    await this.props.updateHousehold( {id, notes} );
     // } catch(error) {
 
     // }
-    this.setState({
+    this.setState( {
       edit: false,
       saving: false,
       value: null,
-    })
+    } );
   };
 
   handleToggleEdit = () =>
-    this.setState({
+    this.setState( {
       edit: true,
       value: this.props.notes ? this.props.notes : "",
     }
-  );
+    );
 
   notes = () => {
-    if (this.state.edit) {
+    if ( this.state.edit ) {
       return this.state.value;
     }
 
-    if (this.props.notes) {
+    if ( this.props.notes ) {
       return this.props.notes;
     }
 
@@ -57,14 +57,14 @@ class Notes extends React.Component {
 
   render() {
     const notes = this.notes();
-    const button = this.state.edit 
+    const button = this.state.edit
       ? (
-        <Button 
+        <Button
           onClick={this.handleSaveChanges}
           color="green"
           loading={this.state.saving}
-        >Save</Button>)
-      : (<Button onClick={this.handleToggleEdit}>Edit</Button>);
+        >Save</Button> )
+      : ( <Button onClick={this.handleToggleEdit}>Edit</Button> );
     return (
       <NotesContainer>
         <Form>
@@ -72,11 +72,11 @@ class Notes extends React.Component {
         </Form>
         {button}
       </NotesContainer>
-    )
+    );
   }
-};
+}
 
-const NotesContainer = ({children}) => (
+const NotesContainer = ( {children} ) => (
   <Panel className="component-hq-households-notes">
     <Panel.Header text="Notes" />
     <div className="flexbox column">
@@ -85,14 +85,14 @@ const NotesContainer = ({children}) => (
   </Panel>
 );
 
-const mapStateToProps = ({hq: {households: { info }}}) => ({
+const mapStateToProps = ( {hq: {households: { info }}} ) => ( {
   notes: info ? info.notes : "",
   id: info && info.id,
-});
+} );
 
 const mapDispatchToProps = {
   updateHousehold,
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Notes);
+export default connect( mapStateToProps, mapDispatchToProps )( Notes );

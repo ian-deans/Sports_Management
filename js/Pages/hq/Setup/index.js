@@ -1,5 +1,0 @@
-export { default as Administrators } from "./Administrators"
-export { default as BankInformation } from "./BankInformation"
-export { default as BusinessDetails } from "./BusinessDetails"
-export { default as LegalRepresentative } from "./LegalRepresentative"
-export { default as ProofOfId } from "./ProofOfId"

@@ -6,7 +6,7 @@ const PaymentHistory = props => {
   const header = {
     text: "Payment History"
   };
-  return <Table header={header} columnNames={props.columnNames} />;
+  return <Table header={ header } columnNames={ props.columnNames } />;
 };
 
 PaymentHistory.defaultProps = {

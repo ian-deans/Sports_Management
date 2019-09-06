@@ -5,7 +5,7 @@ import { TableContained } from "../../common";
 const headerItems = ["Orders"];
 
 //* Unknown field names
-const columnData = new Map([
+const columnData = new Map( [
   ["Image", "field_name"],
   ["Player Name", "field_name"],
   ["Organization", "field_name"], //? Would an org see orders from another org?
@@ -15,20 +15,20 @@ const columnData = new Map([
   ["Order ID", "field_name"],
   ["Payment", "field_name"],
   ["Balance", "field_name"],
-]);
+] );
 
-const OrdersTable = ({orders}) => {
+const OrdersTable = ( {orders} ) => {
   return (
-    <TableContained 
+    <TableContained
       header={headerItems}
       columns={columnData}
       rowData={orders}
     />
-  )
+  );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   orders: state.hq.households.orders,
-});
+} );
 
-export default connect(mapStateToProps)(OrdersTable);
+export default connect( mapStateToProps )( OrdersTable );

@@ -1,0 +1,29 @@
+@import "../../../config/style/variables.less";
+
+.section.account .page.account-financials {
+  display              : grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows   : max-content auto;
+  grid-gap             : @padding 0;
+  grid-template-areas  :
+    "new-cards saved-cards"
+    "order-history order-history";
+  justify-items: stretch;
+  align-items  : stretch;
+
+  .area {
+    &-new-card {
+      grid-area    : new-cards;
+      padding-right: 1em;
+    }
+
+    &-saved-cards {
+      grid-area   : saved-cards;
+      padding-left: 1em;
+    }
+
+    &-order-history {
+      grid-area: order-history;
+    }
+  }
+}

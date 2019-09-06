@@ -1,6 +1,5 @@
 import React from "react";
-import { Grid } from "semantic-ui-react";
-import { EmergencyContactsTable, GeneralInfo, MembersTable, Notes } from "../../../Components/hq/households";
+import { EmergencyContactsTable, GeneralInfo, MembersTable, Notes } from "../../../components/hq/households";
 
 const Family = () => {
 
@@ -19,7 +18,7 @@ const Family = () => {
         <EmergencyContactsTable />
       </div>
     </div>
-  )
+  );
 };
 
 export default Family;

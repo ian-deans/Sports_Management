@@ -303,79 +303,6 @@ html {
       -ms-flex-align: end;
           align-items: flex-end;
 }
-.main-app-layout {
-  height: 100vh;
-  height: 100%;
-  min-width: 1200px;
-  margin: 0 0 0 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.main-app-layout.hq {
-  margin-left: 60px;
-}
-.main-app-layout .zone {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-  max-width: 1240px;
-}
-.main-app-layout .zone.navbar {
-  height: 20%;
-  max-height: 80px;
-  margin-bottom: 2em;
-}
-.main-app-layout .zone.content {
-  height: 100%;
-}
-.section {
-  width: 100%;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding: 0 2em;
-}
-.page {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-}
 /*
   
   Styling for the account section layout
@@ -592,26 +519,38 @@ html {
 .section.hq .page.hq-households .area-main .page.hq-family-info .area-contacts {
   grid-area: contacts;
 }
-.component-file-upload {
+.component-form-file-upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-height: 200px;
+  max-height: 200px;
+  max-width: 200px;
+  min-width: 200px;
+}
+.component-form-file-upload .file-upload {
   height: 11em;
   width: 11em;
-  border: solid gray 1px;
+  border: solid #ccc 1px;
   padding: 1em;
+  min-width: 16em;
+  border-radius: 0.25em;
 }
-.component-form-business-details {
-  min-height: 40em;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 3fr 2fr 2fr 1fr;
-  grid-template-areas: "top top top side" "middle middle middle side" "bottom bottom bottom side" "buttons buttons buttons buttons";
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+.component-form-file-upload .file-upload-file-name {
+  min-height: 2em;
+  overflow-x: hidden;
 }
-.component-form-business-details .area-top {
+.component-form-file-upload .file-upload-label {
+  min-height: 2em;
+}
+.component-form-proof-of-id {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -619,67 +558,9 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  grid-area: top;
-}
-.component-form-business-details .area-middle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  grid-area: middle;
-}
-.component-form-business-details .area-bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
-  grid-area: bottom;
-}
-.component-form-business-details .area-side {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  grid-area: side;
-}
-.component-form-business-details .area-buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  grid-area: buttons;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  min-height: 35em;
 }
 .component-account-financials-saved-cards,
 .component-account-financials-new-card {
@@ -726,7 +607,7 @@ html {
   padding: 1em 2em;
   margin-top: 1em;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 0.25em;
 }
 .component-account-list-item.active {
   background-color: #53c044;
@@ -817,13 +698,15 @@ html {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
 }
 .component-form-legal-representative .area-inputs .input {
   width: 100%;
+  margin-bottom: 0.5lem;
 }
 .component-form-legal-representative .area-inputs .inline-group {
   width: 75%;
@@ -855,4 +738,77 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.component-form-administrators {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.component-form-administrators .row {
+  width: 100%;
+  min-height: 40px;
+  margin-bottom: 5px;
+  padding: 0 20px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.component-form-administrators .row.entry span {
+  width: 16%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.component-form-administrators .row.entry span:nth-child(1) {
+  width: 5%;
+}
+.component-form-administrators .row.entry span:nth-child(2) {
+  width: 10%;
+}
+.component-form-administrators .row.entry span:nth-child(6),
+.component-form-administrators .row.entry span:nth-child(7) {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.component-form-administrators .row.header {
+  min-height: 60px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.component-form-administrators .row.header div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.component-form-administrators .row.spacer {
+  height: 100%;
+  min-height: 0px;
+  margin-bottom: 0px;
+}
+.component-form-administrators button {
+  height: 40px;
+  padding: 10px;
+  background-color: transparent;
+  border: solid black 3px;
+  font-weight: bolder;
+  text-transform: uppercase;
 }

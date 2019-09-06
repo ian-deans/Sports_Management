@@ -1,5 +1,5 @@
-import React from 'react';
-import { Header as SHeader } from 'semantic-ui-react';
+import React from "react";
+import { Header as SHeader } from "semantic-ui-react";
 
 const Header = props => {
   const { as, className, ...restProps } = props;
@@ -7,14 +7,14 @@ const Header = props => {
   // const renderAs = as ? as : 'h3';
 
   return (
-    <SHeader as={ as } className={ `cinch-header ${ className }` } {...restProps}>
+    <SHeader as={ as } className={ `cinch-header ${ className }` } { ...restProps }>
       { props.children }
-    </SHeader> )
-}
+    </SHeader> );
+};
 
 Header.defaultProps = {
-  as: 'h3',
-  className: '',
+  as: "h3",
+  className: "",
 
 };
 

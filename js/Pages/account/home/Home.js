@@ -3,10 +3,11 @@ import {
   DocumentFeed,
   QuickAddMenu,
   UpcomingPayments
-} from "../../../Components/account/home";
-import { ProgramSearch } from "../../../Components/account";
+} from "../../../components/account/home";
+import { ProgramSearch } from "../../../components/account";
+import "./Home.less";
 
-const Home = ({location: {pathname}, history: {push} }) => {
+const Home = () => {
   return (
     <div className="page account-home">
       <div className="area-quick-add">
@@ -27,6 +28,5 @@ const Home = ({location: {pathname}, history: {push} }) => {
     </div>
   );
 };
-
 
 export default Home;

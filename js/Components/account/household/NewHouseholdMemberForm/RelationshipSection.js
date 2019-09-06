@@ -1,12 +1,12 @@
-import React from 'react';
-import { Divider, Grid, Form, Image } from 'semantic-ui-react';
-import { Button, Dropdown, ErrorBoundary, Header } from '../../../common';
+import React from "react";
+import { Divider, Grid, Form, Image } from "semantic-ui-react";
+import { Button, Dropdown, ErrorBoundary, Header } from "../../../common";
 
 const addUserIcon = "/images/icons/add_user.png";
 
 class RelationshipSection extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.state = {
       availableMemebers: [],
       unavailableFamilyMembers: [],
@@ -15,27 +15,27 @@ class RelationshipSection extends React.Component {
 
   componentDidMount() {
     const { familyMembers } = this.props;
-    const availableMembers = familyMembers.map(member => ({
+    const availableMembers = familyMembers.map( member => ( {
       key: member.id,
       text: member.name,
       value: member.id
-    }));
+    } ) );
     const unavailableFamilyMembers = [];
-    this.setState({ availableMembers, unavailableFamilyMembers });
+    this.setState( { availableMembers, unavailableFamilyMembers } );
   }
 
   handleRemoveRelationshipEntry = index => {
-    this.props.removeRelationshipEntry(index);
+    this.props.removeRelationshipEntry( index );
   };
 
-  handleChange = (event, data) => {
+  handleChange = ( event, data ) => {
     //TODO: Add logic to let users only select family
     //      members not already selected
-    this.props.handleChangeFn('relationshipData', data);
+    this.props.handleChangeFn( "relationshipData", data );
   };
 
   // Having the Root component force the user to wait until resources are loaded solves this issue of possibly
-  // not having data in props during the componentDidMount phase. Otherwise getDerivcedStateFromProps could be used
+  // not having data in props during the componentDidMount phase. Otherwise getDerivedStateFromProps could be used
   // to keep local state in sync with props.
 
   // static getDerivedStateFromProps(nextProps, state) {
@@ -51,7 +51,6 @@ class RelationshipSection extends React.Component {
       relationships,
       relationshipTypes,
       addRelationshipEntry,
-      removeRelationshipEntry
     } = this.props;
     const { availableMembers } = this.state;
     return (
@@ -62,7 +61,7 @@ class RelationshipSection extends React.Component {
           </Grid.Column>
 
           <Grid.Column width={13}>
-            {relationships.map((relationship, i) => {
+            {relationships.map( ( relationship, i ) => {
               return (
                 <RelationshipConfiguration
                   key={i}
@@ -74,7 +73,7 @@ class RelationshipSection extends React.Component {
                   removeRelationshipEntryFn={this.handleRemoveRelationshipEntry}
                 />
               );
-            })}
+            } )}
             <div className="flexbox aligned center">
               <span
                 onClick={addRelationshipEntry}
@@ -92,14 +91,14 @@ class RelationshipSection extends React.Component {
 
 export default RelationshipSection;
 
-const RelationshipConfiguration = ({
+const RelationshipConfiguration = ( {
   index,
   availableMembers,
   relationshipTypes,
   relationship: { member, relation, communications, financials },
   handleChangeFn,
   removeRelationshipEntryFn
-}) => {
+} ) => {
   return (
     <React.Fragment>
       <Form.Group widths={2} key={index}>
@@ -125,7 +124,7 @@ const RelationshipConfiguration = ({
             name={`relation_${index}`}
           />
         </Form.Field>
-        <Button onClick={() => removeRelationshipEntryFn(index)}>Remove</Button>
+        <Button onClick={() => removeRelationshipEntryFn( index )}>Remove</Button>
       </Form.Group>
       <Form.Group className="buffer-top">
         <Form.Checkbox

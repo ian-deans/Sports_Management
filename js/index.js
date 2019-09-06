@@ -1,40 +1,50 @@
-import React from "react";
+import React from "react"; /* disable no-unsused-vars*/
 import { render } from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store";
-import { ErrorBoundary } from "./Components/common";
-
-import Root from "./Root";
-import Login from "./Pages/Login";
-
-import "./style/semantic.min.css";
-import "./bootstrap";
+import configureStore from "./redux/create";
+import { ErrorBoundary } from "./components/common";
+import { error } from "./helpers/log";
+import Root from "./containers/Root/Root";
+import { Login } from "./pages";
 
 
-const loginElement = document.getElementById("Login-Form");
-const rootElement = document.getElementById("Main-App");
+//TODO Add 'connected-react-router' as a redux binding for browser history.
 
-if (rootElement) {
-  render(
-    <Provider store={store}>
+
+const initialState = {};
+const store = configureStore( initialState );
+
+const loginElement = document.getElementById( "Login-Form" );
+const rootElement = document.getElementById( "Main-App" );
+
+const renderApp = () => {
+  require( "./style/semantic.min.css" );
+  require( "./bootstrap" );
+
+  const WrappedApp = () => (
+    <Provider store={ store }>
       <ErrorBoundary>
         <Router>
           <Root />
         </Router>
       </ErrorBoundary>
-    </Provider>,
-    rootElement
+    </Provider>
   );
-} else if (loginElement) {
-  render(
-    <Login />,
-    loginElement
-  );
-} else {
-  console.log({
-    error: {
-      render: 'Elements with ids "Main-App" or "Login-Form" not found.'
-    }
-  });
-}
+
+  if ( rootElement ) {
+    render( <WrappedApp />, rootElement );
+
+  } else if ( loginElement ) {
+    render( <Login />, loginElement );
+
+  } else {
+    error( {
+      message: {
+        render: "Elements with ids 'Main-App' or 'Login-Form' not found."
+      }
+    } );
+  }
+};
+
+renderApp();

@@ -1,2 +1,2 @@
-import Hq from './Hq';
+import Hq from "./Hq";
 export default Hq;

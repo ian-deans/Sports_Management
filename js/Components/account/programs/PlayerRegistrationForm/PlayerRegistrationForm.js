@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -8,9 +9,9 @@ import { initPlayerRegistration } from "../../../../actions/account/playerRegist
 import StepIndicator from "./StepIndicator";
 import * as views from "./stepComponents/index";
 
-function isValid(value) {
+function isValid( value ) {
   return value !== null && value !== undefined;
-};
+}
 
 
 const steps = [
@@ -19,34 +20,33 @@ const steps = [
   },
   {
     component: () => <views.SelectPlayer />,
-    isComplete: ({ person_id }) => isValid(person_id),
+    isComplete: ( { person_id } ) => isValid( person_id ),
   },
   {
     component: () => <views.ConfirmDivision />,
-    isComplete: ({ division_id }) => isValid(division_id),
+    isComplete: ( { division_id } ) => isValid( division_id ),
   },
   {
     component: () => <views.AnswerQuestions />,
-    isComplete: ({ division_id }) => isValid(division_id),
+    isComplete: ( { division_id } ) => isValid( division_id ),
   },
   {
     component: () => <views.UploadDocuments />,
-    isComplete: ({ division_id }) => isValid(division_id),
+    isComplete: ( { division_id } ) => isValid( division_id ),
   },
   {
     component: () => <views.SelectPaymentPlan />,
-    isComplete: ({ payment_plan_id }) => isValid(payment_plan_id),
+    isComplete: ( { payment_plan_id } ) => isValid( payment_plan_id ),
   },
   {
     component: () => <views.SelectPaymentMethod />,
-    isComplete: ({ payment_method_id }) => isValid(payment_method_id),
+    isComplete: ( { payment_method_id } ) => isValid( payment_method_id ),
   },
   {
     component: () => <views.Review />,
-    isComplete: ({ division_id }) => isValid(division_id),
+    isComplete: ( { division_id } ) => isValid( division_id ),
   },
 ];
-
 
 
 class PlayerRegistrationForm extends React.Component {
@@ -62,39 +62,39 @@ class PlayerRegistrationForm extends React.Component {
 
   init = async () => {
     const { match: { params: { programId } } } = this.props;
-    await this.props.initPlayerRegistration(programId)
-    this.setState({ currentStep: 1 });
+    await this.props.initPlayerRegistration( programId );
+    this.setState( { currentStep: 1 } );
   }
 
   next = () => {
     const { currentStep } = this.state;
-    if (this.stepIsComplete() && currentStep < 7) {
+    if ( this.stepIsComplete() && currentStep < 7 ) {
       let currentStep = ++this.state.currentStep;
-      this.setState({ currentStep, error: "" });
+      this.setState( { currentStep, error: "" } );
     } else {
-      this.setState({ error: "Current step is not completed." })
+      this.setState( { error: "Current step is not completed." } );
     }
   };
 
   stepIsComplete = () => {
     const { currentStep } = this.state;
-    if (currentStep > 0) {
-      return steps[currentStep].isComplete(this.props.formState);
+    if ( currentStep > 0 ) {
+      return steps[currentStep].isComplete( this.props.formState );
     }
   }
 
   prev = () => {
     let { currentStep } = this.state;
-    if (currentStep > 1) {
+    if ( currentStep > 1 ) {
       currentStep--;
-      this.setState({ currentStep })
+      this.setState( { currentStep } );
     }
   }
 
 
   render() {
     const { currentStep } = this.state;
-    const disabled = (currentStep > 6 || !this.stepIsComplete());
+    const disabled = ( currentStep > 6 || !this.stepIsComplete() );
 
     return (
       <div className="page account-programs-register">
@@ -115,7 +115,7 @@ class PlayerRegistrationForm extends React.Component {
                 onClick={this.prev}
               >
                 Previous
-            </Button>
+              </Button>
               <Button
                 color="black"
                 compact
@@ -123,23 +123,23 @@ class PlayerRegistrationForm extends React.Component {
                 onClick={this.next}
               >
                 Next
-          </Button>
+              </Button>
             </Button.Group>
           </div>
 
         </Panel>
 
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   formState: state.account.playerRegistration,
-});
+} );
 
 const mapDispatchToProps = {
   initPlayerRegistration,
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlayerRegistrationForm));
+export default withRouter( connect( mapStateToProps, mapDispatchToProps )( PlayerRegistrationForm ) );

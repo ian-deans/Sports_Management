@@ -1,0 +1,27 @@
+@import "../../../config/style/variables.less";
+
+.page.organization-setup {
+  flex-direction : row;
+  justify-content: stretch;
+  align-items    : stretch;
+  max-height     : 90vh;
+
+  .area {
+      &-nav {
+          width: 20%;
+      }
+
+      &-main {
+          width       : 80%;
+          padding-left: @padding * 2;
+
+          .organization-setup-main {}
+      }
+  }
+}
+
+
+.station-container {
+  display: flex;
+  min-height: 40em;
+}

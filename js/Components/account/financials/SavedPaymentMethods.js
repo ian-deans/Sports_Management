@@ -2,17 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import { SavedPaymentMethodsList } from "../../common";
 
-const SavedPaymentMethods = ({ paymentMethods }) => {
+const SavedPaymentMethods = ( { paymentMethods } ) => {
   return (
     <SavedPaymentMethodsList
-      paymentMethods={paymentMethods}
+      paymentMethods={ paymentMethods }
     />
-  )
-}
+  );
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   paymentMethods: state.account.root.payment_methods
-});
+} );
 
-export default connect(mapStateToProps)(SavedPaymentMethods);
+export default connect( mapStateToProps )( SavedPaymentMethods );
 

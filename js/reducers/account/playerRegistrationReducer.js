@@ -1,4 +1,5 @@
-import * as actions from "../../actions/account/types"
+/* eslint-disable camelcase */
+import * as actions from "../../actions/account/types";
 
 
 const initialState = {
@@ -23,30 +24,8 @@ const initialState = {
   cart: null,
 };
 
-
-const devTestState = {
-  program_name: "Summer Camp Week 1",
-  org_id: 2,
-  program_id: 1,
-  role_id: 8,
-  person_id: 123,
-  division_id: 1,
-  answers: null,
-  profile_id: 1,
-  payment_plan_id: null,
-  payment_method_id: null,
-  cart_id: null,
-  registration_id: null,
-  players: [],
-  divisions: [],
-  questions: [],
-  payment_plans: [],
-  cart: null,
-};
-
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
+const reducer = ( state = initialState, action ) => {
+  switch ( action.type ) {
 
     case actions.REGISTER_PLAYER_INIT:
       return {
@@ -145,6 +124,6 @@ const reducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default reducer;

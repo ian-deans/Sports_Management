@@ -1,18 +1,17 @@
-import * as appActions from '../../actions/app/types';
-import * as actions from "../../actions/hq/types"
+/* eslint-disable camelcase */
+import * as appActions from "../../actions/app/types";
+import * as actions from "../../actions/hq/types";
 
 const initialState = {
   organization_data: null,
   dashboard_stats: {},
   programs: [],
-  registrations: {},
+  registrations: [],
   registration_id: [],
-  payment_methods: {},
-  payment_method_ids: [],
 };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
+const reducer = ( state = initialState, action ) => {
+  switch ( action.type ) {
     case appActions.SET_HQ: {
       return {
         ...state,
@@ -39,7 +38,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         registrations: action.payload.registrations,
-        
+
         //^ Eventually switch over to new standard below.
         // registrations: {...action.payload.registrations},
         // registration_ids: [...action.payload.registration_ids],
@@ -49,7 +48,7 @@ const reducer = (state = initialState, action) => {
     default: {
       return state;
     }
-  };
+  }
 };
 
 export default reducer;

@@ -9,6 +9,6 @@ export default class Dropdown extends React.Component {
         <option value="0">One</option>
         <option value="1">Two</option>
       </select>
-    )
+    );
   }
 }

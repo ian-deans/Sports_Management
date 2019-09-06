@@ -1,17 +1,17 @@
 import React from "react";
 import { Form, Input, Button } from "semantic-ui-react";
-import { logoPath } from "../../../constants/imagePaths";
+import { logoPath } from "../../../config/imagePaths";
 
 const cinchLogo = logoPath + "cinch-white-alt.png";
 
 const LoginForm = () => {
   const loginUrl = window.location.origin + "/login";
-  const csrfToken = sessionStorage.getItem("CSRF-TOKEN");
+  const csrfToken = sessionStorage.getItem( "CSRF-TOKEN" );
   return (
     <div className="flexbox column aligned-center justified-center">
-      <img src={cinchLogo} />
-      <Form method="POST" action={loginUrl} autoComplete="on">
-        <input type="hidden" name="_token" value={csrfToken} />
+      <img src={ cinchLogo } />
+      <Form method="POST" action={ loginUrl } autoComplete="on">
+        <input type="hidden" name="_token" value={ csrfToken } />
         <Form.Field required>
           <label>Username</label>
           <Input name="email" type="email" />
@@ -25,7 +25,7 @@ const LoginForm = () => {
         </Form.Field>
       </Form>
     </div>
-  )
+  );
 };
 
 export default LoginForm;

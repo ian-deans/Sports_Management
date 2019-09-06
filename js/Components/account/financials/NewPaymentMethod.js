@@ -1,20 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import { saveNewPaymentMethod } from "../../../actions/account"
+import { saveNewPaymentMethod } from "../../../actions/account";
 import { PaymentMethodForm } from "../../forms";
 
-const NewPaymentMethod = ({saveNewPaymentMethod}) => {
+const NewPaymentMethod = ( { saveNewPaymentMethod } ) => {
   return (
     <PaymentMethodForm
-      save={saveNewPaymentMethod}
+      save={ saveNewPaymentMethod }
     />
-  )
+  );
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = () => ( {} );
 
 const mapDispatchToProps = {
   saveNewPaymentMethod
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewPaymentMethod)
+export default connect( mapStateToProps, mapDispatchToProps )( NewPaymentMethod );

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Grid } from "semantic-ui-react";
 import { Panel } from "../../common";
 
-const GeneralInfo = ({ info }) => {
+const GeneralInfo = ( { info } ) => {
   return (
     <Panel>
       <Panel.Header text="General Information" />
@@ -16,7 +16,7 @@ const GeneralInfo = ({ info }) => {
       <Panel.Item>
         <span className="flexbox justified-center aligned-center">
           {info.address_street1},
-            {info.adress_street2}
+          {info.adress_street2}
           <br />
           {info.address_city}, {info.address_state_code}
           <br />
@@ -27,8 +27,8 @@ const GeneralInfo = ({ info }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   info: state.hq.households.info,
-});
+} );
 
-export default connect(mapStateToProps)(GeneralInfo);
+export default connect( mapStateToProps )( GeneralInfo );

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import * as actionTypes from "../../actions/hq/types";
 
 const initialState = {
@@ -11,8 +12,8 @@ const initialState = {
   selection: [],
 };
 
-const reducer = (state = initialState, action) => {
-  switch(action.type) {
+const reducer = ( state = initialState, action ) => {
+  switch( action.type ) {
 
     case actionTypes.HQ_HOUSEHOLDS_SET_CURRENT_DATA:
       return {
@@ -25,10 +26,10 @@ const reducer = (state = initialState, action) => {
         ...state,
         selection: action.payload.selection,
       };
-    
+
     default:
       return state;
-  };
+  }
 };
 
 export default reducer;

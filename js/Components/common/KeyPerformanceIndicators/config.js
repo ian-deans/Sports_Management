@@ -38,7 +38,7 @@ export const chartData = ( data, labels ) => {
         yAxes: [ {
           ticks: {
             beginAtZero: true,
-            callback: function ( value, index, values ) {
+            callback: function ( value ) {
               return value / 1000 + "K";
             },
             fontColor: "#B3B3B3"
@@ -56,111 +56,110 @@ export const chartData = ( data, labels ) => {
       }
     }
 
-  }
-}
-
+  };
+};
 
 
 export const indicatorsData = [ {
-    label: "Revenue",
-    total: "$ 8749",
-    net: 0.54,
-    data: stockData(),
-    labels: [
-      "1 Jan",
-      "1 Feb",
-      "1 Mar",
-      "1 Apr",
-      "1 May",
-      "1 Jun",
-      "1 Jul",
-      "1 Aug",
-      "1 Sep"
-    ]
-  },
-  {
-    label: "Registrations",
-    total: 65,
-    net: 0.21,
-    data: stockData(),
-    labels: [
-      "1 Jan",
-      "1 Feb",
-      "1 Mar",
-      "1 Apr",
-      "1 May",
-      "1 Jun",
-      "1 Jul",
-      "1 Aug",
-      "1 Sep"
-    ]
-  },
-  {
-    label: "Profit",
-    total: "$ 177.62",
-    net: -0.11,
-    data: stockData(),
-    labels: [
-      "1 Jan",
-      "1 Feb",
-      "1 Mar",
-      "1 Apr",
-      "1 May",
-      "1 Jun",
-      "1 Jul",
-      "1 Aug",
-      "1 Sep"
-    ]
-  },
-  {
-    label: "Average Cost",
-    total: "$ 33.11",
-    net: -0.11,
-    data: stockData(),
-    labels: [
-      "1 Jan",
-      "1 Feb",
-      "1 Mar",
-      "1 Apr",
-      "1 May",
-      "1 Jun",
-      "1 Jul",
-      "1 Aug",
-      "1 Sep"
-    ]
-  },
-  {
-    label: "Refunded",
-    total: "25%",
-    net: -0.11,
-    data: stockData(),
-    labels: [
-      "1 Jan",
-      "1 Feb",
-      "1 Mar",
-      "1 Apr",
-      "1 May",
-      "1 Jun",
-      "1 Jul",
-      "1 Aug",
-      "1 Sep"
-    ]
-  },
-  {
-    label: "Growth",
-    total: 25,
-    net: -0.11,
-    data: stockData(),
-    labels: [
-      "1 Jan",
-      "1 Feb",
-      "1 Mar",
-      "1 Apr",
-      "1 May",
-      "1 Jun",
-      "1 Jul",
-      "1 Aug",
-      "1 Sep"
-    ]
-  }
+  label: "Revenue",
+  total: "$ 8749",
+  net: 0.54,
+  data: stockData(),
+  labels: [
+    "1 Jan",
+    "1 Feb",
+    "1 Mar",
+    "1 Apr",
+    "1 May",
+    "1 Jun",
+    "1 Jul",
+    "1 Aug",
+    "1 Sep"
+  ]
+},
+{
+  label: "Registrations",
+  total: 65,
+  net: 0.21,
+  data: stockData(),
+  labels: [
+    "1 Jan",
+    "1 Feb",
+    "1 Mar",
+    "1 Apr",
+    "1 May",
+    "1 Jun",
+    "1 Jul",
+    "1 Aug",
+    "1 Sep"
+  ]
+},
+{
+  label: "Profit",
+  total: "$ 177.62",
+  net: -0.11,
+  data: stockData(),
+  labels: [
+    "1 Jan",
+    "1 Feb",
+    "1 Mar",
+    "1 Apr",
+    "1 May",
+    "1 Jun",
+    "1 Jul",
+    "1 Aug",
+    "1 Sep"
+  ]
+},
+{
+  label: "Average Cost",
+  total: "$ 33.11",
+  net: -0.11,
+  data: stockData(),
+  labels: [
+    "1 Jan",
+    "1 Feb",
+    "1 Mar",
+    "1 Apr",
+    "1 May",
+    "1 Jun",
+    "1 Jul",
+    "1 Aug",
+    "1 Sep"
+  ]
+},
+{
+  label: "Refunded",
+  total: "25%",
+  net: -0.11,
+  data: stockData(),
+  labels: [
+    "1 Jan",
+    "1 Feb",
+    "1 Mar",
+    "1 Apr",
+    "1 May",
+    "1 Jun",
+    "1 Jul",
+    "1 Aug",
+    "1 Sep"
+  ]
+},
+{
+  label: "Growth",
+  total: 25,
+  net: -0.11,
+  data: stockData(),
+  labels: [
+    "1 Jan",
+    "1 Feb",
+    "1 Mar",
+    "1 Apr",
+    "1 May",
+    "1 Jun",
+    "1 Jul",
+    "1 Aug",
+    "1 Sep"
+  ]
+}
 ];

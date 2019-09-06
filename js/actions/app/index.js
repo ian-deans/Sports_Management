@@ -1,45 +1,47 @@
+/* eslint-disable camelcase */
 import * as actionTypes from "./types";
 import { setUSStates, setSportTypes, setProgramTypes, setRelationshipTypes, setAffiliates } from "../ui";
-import API from "../../API/Api";
+import API from "../../api/Api";
+import { dev, error } from "../../helpers/log";
 
 
-const resetApp = () => ({
+const resetApp = () => ( {
   type: actionTypes.RESET_APP,
-})
+} );
 
-const unsetLoading = () => ({
+const unsetLoading = () => ( {
   type: actionTypes.UNSET_LOADING,
-})
+} );
 
-const setUser = user => ({
+const setUser = user => ( {
   type: actionTypes.SET_USER,
   payload: { user },
-});
+} );
 
-const setAccount = accountData => ({
+const setAccount = accountData => ( {
   type: actionTypes.SET_ACCOUNT,
   payload: accountData,
-});
+} );
 
-const setHq = hqData => ({
+const setHq = hqData => ( {
   type: actionTypes.SET_HQ,
   payload: hqData,
-});
+} );
 
-const setHouseholdContext = household_context => ({
+const setHouseholdContext = household_context => ( {
   type: actionTypes.SET_HOUSEHOLD_CONTEXT,
   payload: { household_context },
-});
+} );
 
-const setOrganizationContext = organization_context => ({
+const setOrganizationContext = organization_context => ( {
   type: actionTypes.SET_ORGANIZATION_CONTEXT,
   payload: { organization_context },
-});
+} );
 
-const setProgramContext = program_context => ({
+const setProgramContext = program_context => ( {
   type: actionTypes.SET_PROGRAM_CONTEXT,
   payload: { program_context },
-});
+} );
 
 
 export const loadUIData = () =>
@@ -52,43 +54,40 @@ export const loadUIData = () =>
       API.ui.getAffiliationTypes()
     ];
 
-    const [usStates, sportTypes, relationshipTypes, programTypes, affiliates] = await Promise.all(promises);
+    const [ usStates, sportTypes, relationshipTypes, programTypes, affiliates ] = await Promise.all( promises );
 
-    dispatch(setUSStates(usStates.data));
-    dispatch(setSportTypes(sportTypes.data));
-    dispatch(setRelationshipTypes(relationshipTypes.data));
-    dispatch(setProgramTypes(programTypes.data));
-    console.log('AFFILIATES::')
-    console.log(affiliates)
-    dispatch(setAffiliates(affiliates.data));
+    dispatch( setUSStates( usStates.data ) );
+    dispatch( setSportTypes( sportTypes.data ) );
+    dispatch( setRelationshipTypes( relationshipTypes.data ) );
+    dispatch( setProgramTypes( programTypes.data ) );
+    dispatch( setAffiliates( affiliates.data ) );
   };
 
 export const logout = () =>
-  async dispatch => {
-    dispatch(resetApp())
+  dispatch => {
+    dispatch( resetApp() );
   };
 
 
 export const loadUser = () =>
-  dispatch =>  API.init.user()
-    .then(user => _loadUser(user, dispatch))
-    .catch(error => ({ error }));
+  dispatch => API.init.user()
+    .then( user => _loadUser( user, dispatch ) )
+    .catch( error );
 
 export const updateOrganizationContext = () =>
   async dispatch => {
-    const context = await API.getContext.organization()
-    console.log('new context :: ', context);
-    dispatch(setOrganizationContext(context))
+    const context = await API.getContext.organization();
+    dev( "new context :: ", context );
+    dispatch( setOrganizationContext( context ) );
   };
 
 
+function _loadUser( user, dispatch ) {
+  dispatch( setUser( _processUser( user ) ) );
+  _processContexts( user.contexts.data, dispatch );
+}
 
-function _loadUser(user, dispatch) {
-  dispatch(setUser(_processUser(user)));
-  _processContexts(user.contexts.data, dispatch)
-};
-
-function _processUser(userObj) {
+function _processUser( userObj ) {
   return {
     id: userObj.id,
     person_id: userObj.person_id,
@@ -97,43 +96,41 @@ function _processUser(userObj) {
     last_login: userObj.last_login,
     person: userObj.person.data,
   };
-};
+}
 
 
-async function _processContexts(contexts, dispatch) {
-  await Promise.all(contexts.map(c => _setContextByType(c, dispatch)));
-  dispatch(unsetLoading())
-};
+async function _processContexts( contexts, dispatch ) {
+  await Promise.all( contexts.map( c => _setContextByType( c, dispatch ) ) );
+  dispatch( unsetLoading() );
+}
 
 
-async function _setContextByType(c, dispatch) {
-  if (c) {
+function _setContextByType( c, dispatch ) {
+  if ( c ) {
     const cType = c.context_type;
-    if (cType === "household") {
-      return _initAccount(c, dispatch)
-    }
-    else if (cType === "organization") {
-      return _initHq(c, dispatch)
-    }
-    else if (cType === "program") {
+    if ( cType === "household" ) {
+      return _initAccount( c, dispatch );
+    } else if ( cType === "organization" ) {
+      return _initHq( c, dispatch );
+    } else if ( cType === "program" ) {
       //? What type of user will have a default program context? 
       //? players possibly...
-      dispatch(setProgramContext(c));
+      dispatch( setProgramContext( c ) );
     }
   }
-};
+}
 
-function _initAccount(context, dispatch) {
-  dispatch(setHouseholdContext(context));
+function _initAccount( context, dispatch ) {
+  dispatch( setHouseholdContext( context ) );
 
   // INIT ACCOUNT
   return API.init.account()
-    .then(result => _processAccountData(result))
-    .then(accountData => dispatch(setAccount(accountData)))
-    .catch(error => console.error(error))
-};
+    .then( result => _processAccountData( result ) )
+    .then( accountData => dispatch( setAccount( accountData ) ) )
+    .catch( error );
+}
 
-function _processAccountData(data) {
+function _processAccountData( data ) {
   const accountData = {
     household_data: {
       id: data.id,
@@ -143,32 +140,32 @@ function _processAccountData(data) {
     },
   };
 
-  if (data.address) {
+  if ( data.address ) {
     accountData.household_address = data.address.data;
   }
 
-  if (data.members) {
+  if ( data.members ) {
     accountData.household_members = data.members.data;
   }
 
-  if (data.payment_methods) {
+  if ( data.payment_methods ) {
     accountData.payment_methods = data.payment_methods.data;
   }
 
   return accountData;
-};
-
-function _initHq(context, dispatch) {
-  dispatch(setOrganizationContext(context));
-  return API.init.hq()
-    .then(result => _processHqData(result))
-    .then(hqData => dispatch(setHq(hqData)))
-    .catch(error => console.error(error))
 }
 
-function _processHqData(data) {
+function _initHq( context, dispatch ) {
+  dispatch( setOrganizationContext( context ) );
+  return API.init.hq()
+    .then( result => _processHqData( result ) )
+    .then( hqData => dispatch( setHq( hqData ) ) )
+    .catch( error );
+}
+
+function _processHqData( data ) {
   //! FIXME! Line below causing a bug when no programs are attached to organization
   // const { programs: { data: programs }, ...organization_data } = data;
   return { organization_data: data, programs: [] };
   // return { organization_data, programs };
-};
+}

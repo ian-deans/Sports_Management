@@ -1,40 +1,42 @@
-import React from 'react';
-import { Form } from 'semantic-ui-react';
-import { Button, Input, Panel } from '../../common';
+/* eslint-disable camelcase */
+import React from "react";
+import { Form } from "semantic-ui-react";
+import { Button, Input, Panel } from "../../common";
 import { STRIPE_DEV_KEY } from "../../../config/keys";
 
+import { error } from "../../../helpers/log";
 //TODO: throw/log error if no stripe_key envrionment variable can be found
 // const STRIPE_KEY = process.env.STRIPE_API_SECRET || "pk_test_r35puzPtCAZLLpApaXVMPzum";
 
 class PaymentMethodForm extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.state = {
       customer_name: "",
       loading: false,
     };
-    this.stripe = window.Stripe(STRIPE_DEV_KEY);
+    this.stripe = window.Stripe( STRIPE_DEV_KEY );
     this.elements = this.stripe.elements();
-    this.card = this.elements.create("card");
+    this.card = this.elements.create( "card" );
   }
 
   componentDidMount() {
-    this.card.mount("#stripe-card-element");
+    this.card.mount( "#stripe-card-element" );
   }
 
-  handleChange = (event, data) => {
-    this.setState({ [data.name]: data.value });
+  handleChange = ( event, data ) => {
+    this.setState( { [ data.name ]: data.value } );
   }
 
   handleSubmit = async event => {
     event.preventDefault();
-    this.setState({ loading: true })
+    this.setState( { loading: true } );
     const { customer_name } = this.state;
-    const result = await this.stripe.createToken(this.card, { customer_name });
+    const result = await this.stripe.createToken( this.card, { customer_name } );
 
-    if (result.error) {
-      this.setState({ loading: false })
-      console.error(result.error);
+    if ( result.error ) {
+      this.setState( { loading: false } );
+      error( result.error );
 
     } else {
       const token = result.token;
@@ -43,11 +45,11 @@ class PaymentMethodForm extends React.Component {
           processor_token_id: token.id,
           is_default: true,
         }
-      }
+      };
 
-      this.props.save(data);
+      this.props.save( data );
       this.card.clear();
-      this.setState({ loading: false });
+      this.setState( { loading: false } );
     }
   }
 
@@ -58,13 +60,13 @@ class PaymentMethodForm extends React.Component {
 
         <Form
           className="save-new-payment-card-form"
-          onSubmit={this.handleSubmit}
+          onSubmit={ this.handleSubmit }
         >
           <Form.Field>
             <label>
               Cardholder Name
-          </label>
-            <Input name="customer_name" onChange={this.handleChange} value={customer_name} />
+            </label>
+            <Input name="customer_name" onChange={ this.handleChange } value={ customer_name } />
           </Form.Field>
           <Form.Field id="stripe-card-container">
             <label htmlFor="stripe-card-element">Card Information</label>
@@ -74,16 +76,16 @@ class PaymentMethodForm extends React.Component {
           </Form.Field>
           <Button
             type="submit"
-            disabled={loading}
-            className={loading ? "loading" : ""}
+            disabled={ loading }
+            className={ loading ? "loading" : "" }
           >
             Submit
-        </Button>
+          </Button>
 
         </Form>
       </Panel>
     );
   }
-};
+}
 
 export default PaymentMethodForm;

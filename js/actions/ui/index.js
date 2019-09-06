@@ -1,5 +1,6 @@
-import * as actionTypes from './types';
-import API from '../../API/Api';
+/* eslint-disable camelcase */
+import * as actionTypes from "./types";
+import API from "../../api/Api";
 
 /**
  * Used for dropdowns and other selection forms throughout the app.
@@ -20,78 +21,53 @@ export const unsetLoading = () => ( {
 
 export const setUSStates = us_states => ( {
   type: actionTypes.UI_SET_US_STATES,
-  payload: {us_states},
+  payload: { us_states },
 } );
 
 export const setSportTypes = sport_types => ( {
   type: actionTypes.UI_SET_SPORT_TYPES,
-  payload: {sport_types},
+  payload: { sport_types },
 } );
 
 export const setRelationshipTypes = relationship_types => ( {
   type: actionTypes.UI_SET_RELATIONSHIP_TYPES,
-  payload: {relationship_types},
+  payload: { relationship_types },
 } );
 
 export const setOrganizationTypes = organization_types => ( {
   type: actionTypes.UI_SET_ORGANIZATION_TYPES,
-  payload: {organization_types},
+  payload: { organization_types },
 } );
 
 export const setProgramTypes = program_types => ( {
   type: actionTypes.UI_SET_PROGRAM_TYPES,
-  payload: {program_types},
+  payload: { program_types },
 } );
 
 export const setGoverningBodies = governing_bodies => ( {
   type: actionTypes.UI_SET_GOVERNING_BODIES,
-  payload: {governing_bodies},
+  payload: { governing_bodies },
 } );
 
 export const setDocumentTypes = document_types => ( {
   type: actionTypes.UI_SET_DOCUMENT_TYPES,
-  payload: {document_types},
+  payload: { document_types },
 } );
 
 export const setEmailTypes = email_types => ( {
   type: actionTypes.UI_SET_EMAIL_TYPES,
-  payload: {email_types},
+  payload: { email_types },
 } );
 
 export const setFormFieldTypes = form_field_types => ( {
   type: actionTypes.UI_SET_FORM_FIELD_TYPES,
-  payload: {form_field_types},
+  payload: { form_field_types },
 } );
 
 export const setAffiliates = affiliates => ( {
   type: actionTypes.UI_SET_AFFILIATES,
-  payload: {affiliates},
+  payload: { affiliates },
 } );
-
-
-// Asynchronus Action Creators
-
-// export const fetchInitialUIData = () =>
-//   async ( dispatch, getState ) => {
-
-//     dispatch( startFetch() );
-
-//     const promises = [
-//       dispatch( setUSStates( await API.ui.getUSStates() ) ),
-//       dispatch( setSportTypes( await API.ui.getSportTypes() ) ),
-//       dispatch( setProgramTypes( await API.ui.getProgramTypes() ) ),
-//       dispatch( setRelationshipTypes( await API.ui.getRelationshipTypes() ))
-//     ];
-
-//     return Promise.all(promises)
-//       .then( () => {
-//         return dispatch( stopFetch() );
-//       })
-//       .catch( error => {
-//         throw error
-//         }
-//       )
-//   };
 
 
 export const fetchUSStates = () =>

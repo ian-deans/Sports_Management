@@ -3,9 +3,9 @@ export { default as AvatarImage } from "./AvatarImage/AvatarImage";
 export { default as Button } from "./Button/Button";
 export { default as CircularIcon } from "./CircularIcon/CircularIcon";
 export { default as Dropdown } from "./Dropdown/Dropdown";
-export { default as ErrorBoundary } from "./ErrorBoundary/ErrorBoundary"
-export { default as FileUpload } from "./FileUpload/FileUpload"
-export { default as GraphSmall } from "./GraphSmall/GraphSmall"
+export { default as ErrorBoundary } from "./ErrorBoundary/ErrorBoundary";
+export { default as FileUpload } from "./FileUpload/FileUpload";
+export { default as GraphSmall } from "./GraphSmall/GraphSmall";
 export { default as Header } from "./Header/Header";
 export { default as Input } from "./Input/Input";
 export { default as KeyPerformanceIndicators } from "./KeyPerformanceIndicators/KeyPerformanceIndicators";

@@ -1,15 +1,16 @@
+/* eslint-disable camelcase */
 import React from "react";
-import { Form, Grid, Image, Input } from 'semantic-ui-react';
-import { Dropdown } from '../../../common';
+import { Form, Grid, Input } from "semantic-ui-react";
+import { Dropdown } from "../../../common";
 import ProfileImage from "./ProfileImage";
 
 
 class PersonalInfoSection extends React.Component {
 
   handleChange = ( event, data ) => {
-    this.props.handleChangeFn( 'personalData', data )
+    this.props.handleChangeFn( "personalData", data );
   };
-  
+
   render() {
     const {
       first_name,
@@ -48,7 +49,7 @@ class PersonalInfoSection extends React.Component {
 
           <Form.Group widths={2}>
             <Form.Field>
-              <Dropdown 
+              <Dropdown
                 options={genderOptions}
                 onChange={this.handleChange}
                 value={gender}

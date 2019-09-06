@@ -6,7 +6,7 @@ import { Button, TableContained } from "../../../common";
 import { ACCOUNT_ADD_HOUSEHOLD_MEMBER_URL } from "../../../../config/urls";
 
 const NewMemberButton = () =>
-  <Button as={Link} to={ACCOUNT_ADD_HOUSEHOLD_MEMBER_URL} color="black">
+  <Button as={ Link } to={ ACCOUNT_ADD_HOUSEHOLD_MEMBER_URL } color="black">
     Add New
   </Button>;
 
@@ -25,29 +25,29 @@ const Menu = () => {
 };
 
 
-const headerItems = ["Members", <NewMemberButton />];
-const columnData = new Map([
-  ["Image", "profile_image_path"],
-  ["First Name", "first_name"],
-  ["Last Name", "last_name"],
-  ["Gender", "gender"],
-  ["Birthdate", "birthdate"]
-]);
-const rowExtras =  [<Menu />];
+const headerItems = [ "Members", <NewMemberButton /> ];
+const columnData = new Map( [
+  [ "Image", "profile_image_path" ],
+  [ "First Name", "first_name" ],
+  [ "Last Name", "last_name" ],
+  [ "Gender", "gender" ],
+  [ "Birthdate", "birthdate" ]
+] );
+const rowExtras = [ <Menu /> ];
 
-const MembersTableContainer = ({members}) => {
+const MembersTableContainer = ( { members } ) => {
   return (
     <TableContained
-      header={headerItems}
-      columns={columnData}
-      rowData={members}
-      extras={rowExtras}
+      header={ headerItems }
+      columns={ columnData }
+      rowData={ members }
+      extras={ rowExtras }
     />
-  )
-}
+  );
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   members: state.account.root.household_members,
-});
+} );
 
-export default connect(mapStateToProps)(MembersTableContainer)
+export default connect( mapStateToProps )( MembersTableContainer );

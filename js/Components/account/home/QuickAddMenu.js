@@ -3,12 +3,12 @@ import { Link, withRouter } from "react-router-dom";
 import {
   Image,
 } from "semantic-ui-react";
-import { Panel } from '../../common';
-import { iconPath } from "../../../constants/imagePaths";
+import { Panel } from "../../common";
+import { iconPath } from "../../../config/imagePaths";
 
 const playerIcon = iconPath + "add_user.png";
 const teamIcon = iconPath + "users.png";
-const organizationIcon = iconPath + "globe.png"
+const organizationIcon = iconPath + "globe.png";
 const arrowIcon = iconPath + "circle_arrow.png";
 
 
@@ -16,10 +16,10 @@ const ArrowButton = () => (
   <Image src={ arrowIcon } />
 );
 
-const QuickLink = ({ path, name, image }) => (
+const QuickLink = ( { path, name, image } ) => (
   <Panel.Item
     as={ Link }
-    to={ `${path}` }
+    to={ `${ path }` }
     className="quick-add-link"
   >
     <div className="flexbox aligned-center">
@@ -30,7 +30,7 @@ const QuickLink = ({ path, name, image }) => (
   </Panel.Item>
 );
 
-const QuickAddMenu = ({ path }) => {
+const QuickAddMenu = ( { path } ) => {
   return (
     <Panel.Group className="quick-add-panel">
       <Panel.Header text="Add New" />
@@ -46,11 +46,11 @@ const QuickAddMenu = ({ path }) => {
       />
       <QuickLink
         name="Organization"
-        path={ `/app/new-organization` }
+        path={ "/app/new-organization" }
         image={ organizationIcon }
       />
     </Panel.Group>
   );
 };
 
-export default withRouter(QuickAddMenu);
+export default withRouter( QuickAddMenu );

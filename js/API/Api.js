@@ -1,208 +1,252 @@
-import { formatUIData } from "../utilities";
+/* eslint-disable camelcase */
+import { formatUIData } from "../helpers/api";
 import urls from "./urls";
+import ApiClient from "./ApiClient";
+
+const apiClient = new ApiClient( { version: "1" } );
 
 export default {
-  login: async data => {
-    return window.cinchFetch.authenticateUser(data);
-  },
+  // login: data =>
+  //   apiClient
+  //     .authenticateUser( data ),
 
   //^ General Purpose
 
   //^ CONTEXTS
-  setOrganizationContext: id => window.cinchFetch.post(urls.contexts.ORGANIZATION(id)),
+  setOrganizationContext: id => apiClient.post( urls.contexts.ORGANIZATION( id ) ),
 
   getContext: {
-    organization: () => window.cinchFetch
-      .get(urls.contexts.current.ORGANIZATION)
+    organization: () => apiClient
+      .get( urls.contexts.current.ORGANIZATION )
   },
 
   //^ ADDRESSES
-  createAddress: data => window.cinchFetch
-    .post(urls.ADDRESSES, data),
+  createAddress: data => apiClient
+    .post( urls.ADDRESSES, data ),
 
-  updateAddress: ({ addressId, payload }) => window.cinchFetch
-    .put(urls.ADDRESS(addressId), payload),
+  updateAddress: ( { addressId, payload } ) => apiClient
+    .put( urls.ADDRESS( addressId ), payload ),
 
 
   //^ CARTS
-  getCart: cartId => window.cinchFetch.get(urls.CARTS(cartId)),
+  getCart: cartId => apiClient
+    .get( urls.CARTS( cartId ) ),
 
-  removeCartItem: ids => window.cinchFetch.delete(urls.CART_ITEMS(ids)),
+  removeCartItem: ids => apiClient
+    .delete( urls.CART_ITEMS( ids ) ),
 
   //^ HOUSEHOLDS GENERIC
-  updateHousehold: (id, data) =>
-    window.cinchFetch.put(urls.HOUSEHOLD(id), data),
+  updateHousehold: ( id, data ) => apiClient
+    .put( urls.HOUSEHOLD( id ), data ),
 
   //^ ORGANIZATIONS
-  createOrganization: payload => window.cinchFetch
-    .post(urls.ORGANIZATIONS, payload),
+  createOrganization: payload => apiClient
+    .post( urls.ORGANIZATIONS, payload ),
 
   //^ PEOPLE
-  createPerson: data => window.cinchFetch
-    .post(urls.PEOPLE, data),
+  createPerson: data => apiClient
+    .post( urls.PEOPLE, data ),
 
-  getPerson: id => window.cinchFetch
-    .get(urls.PERSON(id)),
+  getPerson: id => apiClient
+    .get( urls.PERSON( id ) ),
 
-  updatePerson: (id, data) => window.cinchFetch
-    .put(urls.PERSON(id), data),
+  updatePerson: ( id, data ) => apiClient
+    .put( urls.PERSON( id ), data ),
 
   //^ PROGRAMS
-  getProgram: programId => window.cinchFetch
-    .get(urls.PROGRAM(programId)),
+  getProgram: programId => apiClient
+    .get( urls.PROGRAM( programId ) ),
 
-  getRolesForProgram: programId => window.cinchFetch
-    .get(urls.PROGRAM_ROLES(programId)),
+  getRolesForProgram: programId => apiClient
+    .get( urls.PROGRAM_ROLES( programId ) ),
 
-  getEligiblePeopleForRole: ({ program_id, role_id }) => window.cinchFetch
-    .get(urls.ELIGIBLE_PEOPLE_FOR_ROLE({ program_id, role_id })),
+  getEligiblePeopleForRole: ( { program_id, role_id } ) => apiClient
+    .get( urls.ELIGIBLE_PEOPLE_FOR_ROLE( { program_id, role_id } ) ),
 
-  getQuestionsForRole: ({ program_id, role_id }) => window.cinchFetch
-    .get(urls.QUESTIONS_FOR_ROLE({ program_id, role_id })),
-
-
+  getQuestionsForRole: ( { program_id, role_id } ) => apiClient
+    .get( urls.QUESTIONS_FOR_ROLE( { program_id, role_id } ) ),
 
 
-  createRegistrationForDivision: ({ division_id, data }) => window.cinchFetch
-    .post(urls.DIVISION_REGISTRATIONS(division_id), data),
+  createRegistrationForDivision: ( { division_id, data } ) => apiClient
+    .post( urls.DIVISION_REGISTRATIONS( division_id ), data ),
 
 
-
-  getPaymentPlansForOrg: organizationId => window.cinchFetch
-    .get(urls.PAYMENT_PLANS(organizationId)),
+  getPaymentPlansForOrg: organizationId => apiClient
+    .get( urls.PAYMENT_PLANS( organizationId ) ),
 
 
   playerRegistration: {
-    getEligibleDivisions: ({ program_id, role_id, person_id }) => window.cinchFetch
-      .get(urls.ELIGIBLE_DIVISIONS_FOR_PLAYER({ program_id, role_id, person_id })),
+    getEligibleDivisions: ( { program_id, role_id, person_id } ) => apiClient
+      .get( urls.ELIGIBLE_DIVISIONS_FOR_PLAYER( { program_id, role_id, person_id } ) ),
 
-    createPlayerProfile: ({ division_id, role_id, person_id }) => window.cinchFetch
-      .post(urls.DIVISION_ROLE_PROFILE({ division_id, role_id, person_id })),
+    createPlayerProfile: ( { division_id, role_id, person_id } ) => apiClient
+      .post( urls.DIVISION_ROLE_PROFILE( { division_id, role_id, person_id } ) ),
 
-    getPlayerProfileForDivision: ({ division_id, role_id, person_id }) => window.cinchFetch
-      .get(urls.DIVISION_ROLE_PROFILE({ division_id, role_id, person_id })),
+    getPlayerProfileForDivision: ( { division_id, role_id, person_id } ) => apiClient
+      .get( urls.DIVISION_ROLE_PROFILE( { division_id, role_id, person_id } ) ),
 
-    createCart: () => window.cinchFetch
-      .post(urls.account.CREATE_CART_FOR_HOUSEHOLD),
+    createCart: () => apiClient
+      .post( urls.account.CREATE_CART_FOR_HOUSEHOLD ),
 
-    addRegistrationToCart: ({ registration_id, cart_id }) => window.cinchFetch
-      .post(urls.ADD_REGISTRATION_TO_CART({ registration_id, cart_id })),
+    addRegistrationToCart: ( { registration_id, cart_id } ) => apiClient
+      .post( urls.ADD_REGISTRATION_TO_CART( { registration_id, cart_id } ) ),
   },
 
   init: {
-    account: () => window.cinchFetch
-      .get(urls.account.INIT),
+    account: () => apiClient
+      .get( urls.account.INIT ),
 
-    hq: () => window.cinchFetch
-      .get(urls.hq.INIT),
+    hq: () => apiClient
+      .get( urls.hq.INIT ),
 
-    user: () => window.cinchFetch
-      .get(urls.INIT_USER),
+    user: () => apiClient
+      .get( urls.INIT_USER ),
   },
-  account: {
-    attachPersonToHousehold: id => window.cinchFetch
-      .post(urls.account.ATTACH_TO_HOUSEHOLD(id)),
 
-    createRelationship: ({
+  account: {
+    attachPersonToHousehold: id => apiClient
+      .post( urls.account.ATTACH_TO_HOUSEHOLD( id ) ),
+
+    createRelationship: ( {
       target_id,
       member_id,
       relation_id,
       receive_communications,
       access_financials,
-    }) => window.cinchFetch
+    } ) => apiClient
       .post(
-        urls.account.CREATE_RELATIONSHIP({ target_id, member_id }),
+        urls.account.CREATE_RELATIONSHIP( { target_id, member_id } ),
         { data: { type_id: relation_id, access_financials, receive_communications } }
       ),
+    getHouseholdMembers: () => apiClient
+      .get( urls.account.HOUSEHOLD_MEMBERS_URL ),
 
-    getHouseholdMembers: () => window.cinchFetch
-      .get(urls.account.HOUSEHOLD_MEMBERS_URL),
+    getPaymentMethods: () => apiClient
+      .get( urls.account.PAYMENT_METHODS ),
 
-    getPaymentMethods: () => window.cinchFetch
-      .get(urls.account.PAYMENT_METHODS),
-
-    getProgram: id => window.cinchFetch
+    getProgram: id => apiClient
       // .get('/programs/' + id + "?include=organization"),
-      .get(urls.account.PROGRAM_DEATAILS_URL(id)),
+      .get( urls.account.PROGRAM_DEATAILS_URL( id ) ),
 
-    savePaymentMethod: data => window.cinchFetch
-      .post(urls.account.PAYMENT_METHODS, data),
+    savePaymentMethod: data => apiClient
+      .post( urls.account.PAYMENT_METHODS, data ),
 
-    searchForPrograms: options => window.cinchFetch
-      .get(urls.account.PROGRAM_SEARCH_URL(options)),
+    searchForPrograms: options => apiClient
+      .get( urls.account.PROGRAM_SEARCH_URL( options ) ),
   },
+
   hq: {
-    getHouseholdById: id => window.cinchFetch
-      .get(urls.hq.GET_HOUSEHOLD_BY_ID(id)),
+    getHouseholdById: id => apiClient
+      .get( urls.hq.GET_HOUSEHOLD_BY_ID( id ) ),
 
-    getHouseholdSelection: () => window.cinchFetch
-      .get(urls.hq.GET_HOUSEHOLD_SELECTION),
+    getHouseholdSelection: () => apiClient
+      .get( urls.hq.GET_HOUSEHOLD_SELECTION ),
 
-    getDashboardStats: () => window.cinchFetch
-      .get(urls.hq.DASHBOARD_STATS),
+    getDashboardStats: () => apiClient
+      .get( urls.hq.DASHBOARD_STATS ),
 
-    getOrganizationData: () => window.cinchFetch.get(urls.CURRENT_ORGANIZATION),
+    getOrganizationData: () => apiClient.get( urls.CURRENT_ORGANIZATION ),
 
-    getOrganizationSetupData: id => window.cinchFetch.get(urls.hq.ORGANIZATION_SETUP(id)),
+    getOrganizationSetupData: id => apiClient.get( urls.hq.ORGANIZATION_SETUP( id ) ),
 
-    savePaymentMethod: data => window.cinchFetch
-      .post(urls.hq.PAYMENT_METHODS, data),
+    savePaymentMethod: data => apiClient
+      .post( urls.hq.PAYMENT_METHODS, data ),
 
-    updateBusinessDetails: (id, business_details) => window.cinchFetch
-      .put(urls.ORGANIZATION(id), business_details),
+    updateBusinessDetails: ( id, business_details ) => apiClient
+      .put( urls.ORGANIZATION( id ), business_details ),
 
-    updateProofOfIdImagePath: payload => window.cinchFetch
-      .put(urls.CURRENT_ORGANIZATION, payload),
-      
-    uploadFile: payload => window.cinchFetch
-      .postFile(urls.hq.FILES, payload),
+    updateProofOfIdImagePath: payload => apiClient
+      .put( urls.CURRENT_ORGANIZATION, payload ),
 
   },
 
   organizationSetup: {
-    attachLegalRepresentative: id => window.cinchFetch
-      .post(urls.organizationSetup.ATTACH_LEGAL_REPRESENTATIVE(id)),
+    addBankAccount: payload => apiClient
+      .post( "/organizations/current/bank_accounts", payload ),
+
+    getBankAccounts: () => apiClient
+      .get( "/organizations/current/bank_accounts" ),
+
+    getUsersByEmail: email => apiClient
+      .get( `/users?filter=email eq ${ email }` ),
+
+    getDetails: () => apiClient
+      .get( "/organizations/current" ),
+
+    getLegalRep: () => apiClient
+      .get( "/organizations/current/legal_representative" ),
+
+    getStaff: () => apiClient
+      .get( "/organizations/current/staff" ),
+
+    getStaffRoles: () => apiClient
+      .get( "/role_groups/org/roles" ),
+
+    attachLegalRepresentative: id => apiClient
+      .post( urls.organizationSetup.ATTACH_LEGAL_REPRESENTATIVE( id ) ),
+
+    saveNewStaffMember: ( { personId, roleId } ) => apiClient
+      .post( `/organizations/current/roles/${ roleId }/people/${ personId }/profiles` ),
+
+    update: payload => apiClient
+      .patch( "/organizations/current", payload ),
+
+    updatePUT: ( { id, payload } ) => apiClient
+      .put( `/organizations/${ id }`, payload ),
+
+    uploadFile: payload => apiClient
+      .postFile( urls.hq.FILES, payload ),
   },
 
   ui: {
     getUSStates: () =>
-      window.cinchFetch.getUIData(urls.STATES)
-        .then(formatUIData),
+      apiClient
+        .getUIData( urls.STATES )
+        .then( formatUIData ),
 
     getSportTypes: () =>
-      window.cinchFetch.getUIData(urls.SPORTS)
-        .then(formatUIData),
+      apiClient
+        .getUIData( urls.SPORTS )
+        .then( formatUIData ),
 
     getRelationshipTypes: () =>
-      window.cinchFetch.getUIData(urls.RELATIONSHIP_TYPES)
-        .then(formatUIData),
+      apiClient
+        .getUIData( urls.RELATIONSHIP_TYPES )
+        .then( formatUIData ),
 
     getOrganizationTypes: () =>
-      window.cinchFetch.getUIData(urls.ORGANIZATION_TYPES)
-        .then(formatUIData),
+      apiClient
+        .getUIData( urls.ORGANIZATION_TYPES )
+        .then( formatUIData ),
 
     getProgramTypes: () =>
-      window.cinchFetch.getUIData(urls.PROGRAM_TYPES)
-        .then(formatUIData),
+      apiClient
+        .getUIData( urls.PROGRAM_TYPES )
+        .then( formatUIData ),
 
     getGoverningBodies: () =>
-      window.cinchFetch.getUIData(urls.GOVERNING_BODIES)
-        .then(formatUIData),
+      apiClient
+        .getUIData( urls.GOVERNING_BODIES )
+        .then( formatUIData ),
 
     getDocumentTypes: () =>
-      window.cinchFetch.getUIData(urls.DOCUMENT_TYPES)
-        .then(formatUIData),
+      apiClient
+        .getUIData( urls.DOCUMENT_TYPES )
+        .then( formatUIData ),
 
     getEmailTypes: () =>
-      window.cinchFetch.getUIData(urls.EMAIL_TYPES)
-        .then(formatUIData),
+      apiClient
+        .getUIData( urls.EMAIL_TYPES )
+        .then( formatUIData ),
 
     getFormFieldTypes: () =>
-      window.cinchFetch.getUIData(urls.FORM_FIELD_TYPES)
-        .then(formatUIData),
-    
-    getAffiliationTypes: () => 
-      window.cinchFetch.getUIData(urls.AFFILIATES)
-      .then(formatUIData),
+      apiClient
+        .getUIData( urls.FORM_FIELD_TYPES )
+        .then( formatUIData ),
+
+    getAffiliationTypes: () =>
+      apiClient
+        .getUIData( urls.AFFILIATES )
+        .then( formatUIData ),
   }
 };

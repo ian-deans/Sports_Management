@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Image } from "semantic-ui-react";
-const avatarImage = "/images/icons/avatar.png"
+const avatarImage = "/images/icons/avatar.png";
+import { dev } from "../../../../helpers/log";
 
 class ProfileImage extends React.Component {
 
@@ -10,41 +11,40 @@ class ProfileImage extends React.Component {
     body: null,
   }
 
-  handleChange = (event, data) => {
+  handleChange = ( event ) => {
     // const data = new FormData();
     // const files = Array.from(event.target.files)
     const formData = new FormData();
-    formData.append("file_field_name", "profile_image");
-    formData.append("profile_image", event.target.files[0]);
-    this.setState({body: formData })
+    formData.append( "file_field_name", "profile_image" );
+    formData.append( "profile_image", event.target.files[0] );
+    this.setState( {body: formData } );
   }
 
   toggleEdit = () => {
-    return this.setState({edit: true});
+    return this.setState( {edit: true} );
   }
 
-  handleUpload = async () => {
-    this.setState({loading: true});
+  handleUpload = () => {
+    this.setState( {loading: true} );
     const { body } = this.state;
-    fetch("http://localhost:3000/api/v1/people/121/files", {
+    fetch( "http://localhost:3000/api/v1/people/121/files", {
       method: "POST",
       headers: {
         "Content-Type": "multipart/form-data",
         // "Accept": "multipart/form-data",
       },
       body: body,
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)      
-    })
-    console.log('finished')
-
+    } )
+      .then( response => response.json() )
+      .then( data => {
+        dev( data );
+        dev( "finished" );
+      } );
   }
 
   render() {
 
-    if (this.state.edit){
+    if ( this.state.edit ){
       return (
         <div className="component-profile-image">
           <form className="flexbox column justified-center aligned-center">
@@ -52,7 +52,7 @@ class ProfileImage extends React.Component {
             <Button loading={this.state.loading} onClick={this.handleUpload}>Save</Button>
           </form>
         </div>
-      )
+      );
     }
 
     return (
@@ -63,7 +63,7 @@ class ProfileImage extends React.Component {
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 export default ProfileImage;

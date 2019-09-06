@@ -1,13 +1,13 @@
 import React from "react";
-import { Grid, Form } from 'semantic-ui-react';
-import { Dropdown, Header, Input } from '../../../common';
+import { Grid, Form } from "semantic-ui-react";
+import { Dropdown, Header, Input } from "../../../common";
 
 class AddressInfoSection extends React.Component {
 
   handleChange = ( event, data ) => {
-    this.props.handleChangeFn( 'addressData', data );
+    this.props.handleChangeFn( "addressData", data );
   }
-  
+
   render() {
     const {
       sameAddress,
@@ -19,26 +19,26 @@ class AddressInfoSection extends React.Component {
     } = this.props;
     return (
       <Grid.Row columns="equal" className="form-section">
-        <Grid.Column stretched width={3}>
+        <Grid.Column stretched width={ 3 }>
           <Header as="h5">Address</Header>
           <Form.Field>
 
-          <Form.Checkbox
-            name="sameAddress"
-            onChange={this.handleChange}
-            checked={sameAddress}
+            <Form.Checkbox
+              name="sameAddress"
+              onChange={ this.handleChange }
+              checked={ sameAddress }
             />
-          <label>Same as Household</label>
-            </Form.Field>
+            <label>Same as Household</label>
+          </Form.Field>
         </Grid.Column>
 
         <Grid.Column>
           <Form.Group widths="equal">
             <Form.Field>
               <Input
-                disabled={sameAddress}
-                onChange={this.handleChange}
-                value={street}
+                disabled={ sameAddress }
+                onChange={ this.handleChange }
+                value={ street }
                 name="street1"
                 placeholder="Street Address"
               />
@@ -47,29 +47,29 @@ class AddressInfoSection extends React.Component {
           <Form.Group width="equal">
             <Form.Field>
               <Input
-                disabled={sameAddress}
-                onChange={this.handleChange}
-                value={city}
+                disabled={ sameAddress }
+                onChange={ this.handleChange }
+                value={ city }
                 name="city"
                 placeholder="City"
-                />
+              />
             </Form.Field>
-            <Form.Field width={6}>
+            <Form.Field width={ 6 }>
               <Dropdown
-                disabled={sameAddress}
-                onChange={this.handleChange}
-                value={state}
-                options={usStates}
+                disabled={ sameAddress }
+                onChange={ this.handleChange }
+                value={ state }
+                options={ usStates }
                 selection
                 name="state_id"
                 placeholder="State"
               />
             </Form.Field>
-            <Form.Field width={4}>
+            <Form.Field width={ 4 }>
               <Input.ZipCode
-                disabled={sameAddress}
-                onChange={this.handleChange}
-                value={zip}
+                disabled={ sameAddress }
+                onChange={ this.handleChange }
+                value={ zip }
                 name="zip"
                 placeholder="Zip"
               />

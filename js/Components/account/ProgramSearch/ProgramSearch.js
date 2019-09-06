@@ -1,12 +1,11 @@
+/* eslint-disable camelcase */
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { programSearch } from "../../../actions/account";
-import { lastInPath } from "../../../utilities";
+import { getLastPathFromUrl } from "../../../helpers/string";
 import { Form } from "semantic-ui-react";
 import { Button, Dropdown, Input, Panel } from "../../common";
-
-const URL = "/programs";
 
 class ProgramSearch extends React.Component {
   state = {
@@ -20,38 +19,38 @@ class ProgramSearch extends React.Component {
     error: null,
   };
 
-  handleChange = (event, data) => {
-    const state = {...this.state};
-    state.options[data.name] = data.value;
-    this.setState(state);
+  handleChange = ( event, data ) => {
+    const state = { ...this.state };
+    state.options[ data.name ] = data.value;
+    this.setState( state );
   };
 
   handleSubmit = async event => {
     event.preventDefault();
-    const {location:{pathname}} = this.props;
-    
+    const { location: { pathname } } = this.props;
+
     const options = this.state.options;
-    this.setState({loading: true, error: null});
-    const response = await this.props.programSearch(options);
-    if (response) {
-      return this.setState({loading: false, error: 'No Results'});
+    this.setState( { loading: true, error: null } );
+    const response = await this.props.programSearch( options );
+    if ( response ) {
+      return this.setState( { loading: false, error: "No Results" } );
     }
 
-    const currentView = lastInPath(pathname);
-    this.setState({loading: false});
+    const currentView = getLastPathFromUrl( pathname );
+    this.setState( { loading: false } );
 
-    if (currentView !== "programs") {
-      this.props.history.push("/app/account/programs");
+    if ( currentView !== "programs" ) {
+      this.props.history.push( "/app/account/programs" );
     }
   };
 
   render() {
-    const { options: {organizationName, sport, programType, zipCode}, loading } = this.state;
-    const { programTypes, sportTypes, location: {pathname} } = this.props;
+    const { options: { organizationName, sport, programType, zipCode }, loading } = this.state;
+    const { programTypes, sportTypes, location: { pathname } } = this.props;
 
-    const currentView = lastInPath(pathname);
+    const currentView = getLastPathFromUrl( pathname );
 
-    if (currentView === "register") {
+    if ( currentView === "register" ) {
       return null;
     }
 
@@ -59,24 +58,24 @@ class ProgramSearch extends React.Component {
       <Panel.Group>
         <Panel.Header text="Find A Program" />
         <Panel.Item className="flexbox aligned center">
-        
-          <Form className="program-search-form" onSubmit={this.handleSubmit}>
+
+          <Form className="program-search-form" onSubmit={ this.handleSubmit }>
             <Form.Group className="main-group" widths="equal">
-              { (currentView !== "account") && (
+              { ( currentView !== "account" ) && (
                 <Form.Field width={ 10 } className="organization-name-field">
                   <React.Fragment>
                     <label>Organization</label>
                     <Input
-                      onChange={this.handleChange}
+                      onChange={ this.handleChange }
                       placeholder="Search"
-                      value={organizationName}
-                      tabIndex={0}
+                      value={ organizationName }
+                      tabIndex={ 0 }
                       className="organization-name-input"
                       name="organization_name"
                     />
                   </React.Fragment>
                 </Form.Field>
-              )}
+              ) }
 
               <Form.Field>
                 <Form.Group
@@ -86,9 +85,9 @@ class ProgramSearch extends React.Component {
                   <Form.Field className="sport-type-field">
                     <label>Sport</label>
                     <Dropdown
-                      options={sportTypes}
-                      onChange={this.handleChange}
-                      value={sport}
+                      options={ sportTypes }
+                      onChange={ this.handleChange }
+                      value={ sport }
                       placeholder="Sport"
                       className="sport-type-dropdown"
                       name="sport_id"
@@ -100,9 +99,9 @@ class ProgramSearch extends React.Component {
                   <Form.Field className="program-type-field">
                     <label>Type</label>
                     <Dropdown
-                      options={programTypes}
-                      onChange={this.handleChange}
-                      value={programType}
+                      options={ programTypes }
+                      onChange={ this.handleChange }
+                      value={ programType }
                       placeholder="Type"
                       className="program-type-dropdown"
                       name="type_id"
@@ -114,9 +113,9 @@ class ProgramSearch extends React.Component {
                   <Form.Field className="zip-code-field">
                     <label>Zip Code</label>
                     <Input.ZipCode
-                      onChange={this.handleChange}
-                      value={zipCode}
-                      tabIndex={0}
+                      onChange={ this.handleChange }
+                      value={ zipCode }
+                      tabIndex={ 0 }
                       className="zip-code-dropdown"
                       name="zipCode"
                     />
@@ -124,7 +123,7 @@ class ProgramSearch extends React.Component {
                 </Form.Group>
               </Form.Field>
 
-              <Form.Field width={6} className="search-submit-field">
+              <Form.Field width={ 6 } className="search-submit-field">
                 <Button
                   // as={Link}
                   // to={linkUrl}
@@ -132,7 +131,7 @@ class ProgramSearch extends React.Component {
                   basic
                   color="black"
                   className="search-submit-btn"
-                  loading={loading}
+                  loading={ loading }
                 >
                   Search
                 </Button>
@@ -140,22 +139,22 @@ class ProgramSearch extends React.Component {
             </Form.Group>
           </Form>
         </Panel.Item>
-        {this.state.error}
+        { this.state.error }
       </Panel.Group>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   programTypes: state.ui.programTypes,
   sportTypes: state.ui.sport_types,
-});
+} );
 
 const mapDispatchToProps = {
   programSearch
 };
 
-export default withRouter(connect(
+export default withRouter( connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProgramSearch));
+)( ProgramSearch ) );

@@ -4,7 +4,7 @@ import { getEligiblePlayers, selectPlayer } from "../../../../../actions/account
 import { Table } from "semantic-ui-react";
 import { AvatarImage, Button, SmallSpinner } from "../../../../common";
 
-import ListItem from "../ListItem";
+// import ListItem from "../ListItem";
 
 
 /**
@@ -24,17 +24,17 @@ class SelectPlayer extends React.Component {
 
   init = async () => {
     await this.props.getEligiblePlayers();
-    this.setState({ loading: false });
+    this.setState( { loading: false } );
   }
 
   handleSelectPlayer = id => {
-    this.props.selectPlayer(id);
+    this.props.selectPlayer( id );
   }
 
   players = () => {
-    const { players, person_id } = this.props;
-    const rows = players.map((p, i) => {
-      const active = p.id === person_id;
+    const { players, personId } = this.props;
+    const rows = players.map( ( p ) => {
+      const active = p.id === personId;
       return (
         <Table.Row key={p.id} active={active}>
           <Table.Cell>
@@ -50,11 +50,11 @@ class SelectPlayer extends React.Component {
             {p.gender}
           </Table.Cell>
           <Table.Cell textAlign="center">
-            <Button color="black" size="tiny" onClick={() => this.handleSelectPlayer(p.id)}>Select</Button>
+            <Button color="black" size="tiny" onClick={() => this.handleSelectPlayer( p.id )}>Select</Button>
           </Table.Cell>
         </Table.Row>
-      )
-    });
+      );
+    } );
     return (
       <Table textAlign="center" verticalAlign="middle">
         <Table.Body>
@@ -71,18 +71,18 @@ class SelectPlayer extends React.Component {
         <h2>Eligible Players</h2>
         {this.state.loading ? <div><SmallSpinner /></div> : players}
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   players: state.account.playerRegistration.players,
-  person_id: state.account.playerRegistration.person_id,
-})
+  personId: state.account.playerRegistration.person_id,
+} );
 
 const mapDispatchToProps = {
   getEligiblePlayers,
   selectPlayer,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SelectPlayer)
+export default connect( mapStateToProps, mapDispatchToProps )( SelectPlayer );

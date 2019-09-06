@@ -1,13 +1,12 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
-import { Grid } from "semantic-ui-react";
 import {
   Header,
   Panel,
   PageNotFound,
   ErrorBoundary
-} from "../../../Components/common";
-import { SelectHousehold } from "../../../Components/hq/households";
+} from "../../../components/common";
+import { SelectHousehold } from "../../../components/hq/households";
 
 import Family from "./Family";
 import OrderHistory from "./OrderHistory";
@@ -20,7 +19,7 @@ class Household extends React.Component {
       location: { pathname },
     } = this.props;
 
-    const currentLocation = pathname.split("/").pop();
+    const currentLocation = pathname.split( "/" ).pop();
 
     return (
       <div className="page hq-households">
@@ -42,38 +41,31 @@ class Household extends React.Component {
         </div>
 
       </div>
-    )
-
-    return (
-      <React.Fragment>
-        <Grid.Row>
-        </Grid.Row>
-      </React.Fragment>
     );
   }
-};
+}
 
 export default Household;
 
-const NavPanel = ({ currentLocation, path }) => (
+const NavPanel = ( { currentLocation, path } ) => (
   <Panel>
     <Panel.Header>
       <div className="full-width flexbox justified-space-between" >
         <div className="flexbox aligned-center ">
-        <NavLabel
-          path={path}
-          active={currentLocation === "households"}
-          name="Family"
+          <NavLabel
+            path={path}
+            active={currentLocation === "households"}
+            name="Family"
           />
-        <NavLabel
-          path={path + "/order-history"}
-          active={currentLocation === "order-history"}
-          name="Order History"
+          <NavLabel
+            path={path + "/order-history"}
+            active={currentLocation === "order-history"}
+            name="Order History"
           />
-        <NavLabel
-          path={path + "/documents"}
-          active={currentLocation === "documents"}
-          name="Documents"
+          <NavLabel
+            path={path + "/documents"}
+            active={currentLocation === "documents"}
+            name="Documents"
           />
         </div>
         <div className="flexbox aligned-center justified-center component-hq-select-household">
@@ -84,7 +76,7 @@ const NavPanel = ({ currentLocation, path }) => (
   </Panel>
 );
 
-const NavLabel = ({ active, name, path }) => (
+const NavLabel = ( { active, name, path } ) => (
   <div className="buffer-right">
     <Link to={path}>
       <Header color={active ? "blue" : "grey"}>{name}</Header>

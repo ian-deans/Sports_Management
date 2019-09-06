@@ -1,0 +1,33 @@
+@import "../../../config/style/variables.less";
+
+.section.account .page.account-home {
+  display              : grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows   : auto auto auto;
+  grid-gap             : @padding 0;
+  grid-template-areas  :
+    "search quick-add"
+    "document-feed quick-add"
+    "financial-feed .";
+  justify-items: stretch;
+  align-items  : stretch;
+
+  .area {
+    &-program-search {
+      grid-area: search;
+    }
+
+    &-document-feed {
+      grid-area: document-feed;
+    }
+
+    &-financial-feed {
+      grid-area: financial-feed;
+    }
+
+    &-quick-add {
+      grid-area   : quick-add;
+      padding-left: @padding;
+    }
+  }
+}

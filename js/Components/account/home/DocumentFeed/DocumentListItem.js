@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "semantic-ui-react";
 import { Button, Header, Panel } from "../../../common";
 
-const DocumentListItem = ({ name, size }) => {
+const DocumentListItem = ( { name, size } ) => {
   return (
     <Panel.Item className="new-documents-item">
       <div className="document-details-container">
@@ -12,8 +12,8 @@ const DocumentListItem = ({ name, size }) => {
           className="document-image"
         />
         <span className="document-details">
-          <Header as="h5">{name}</Header>
-          <p>{size}</p>
+          <Header as="h5">{ name }</Header>
+          <p>{ size }</p>
         </span>
       </div>
       <Button basic className="feed-item-button">

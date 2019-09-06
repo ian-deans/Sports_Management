@@ -1,0 +1,13 @@
+export const SET_BANK_ACCOUNTS = "redux/organizationSetup/SET_BANK_ACCOUNTS";
+export const SET_BUSINESS_DETAILS = "redux/organizationSetup/SET_BUSINESS_DETAILS";
+export const SET_LEGAL_REPRESENTATIVE = "redux/organizationSetup/SET_LEGAL_REPRESENTATIVE";
+export const SET_PAYMENT_METHODS = "redux/organizationSetup/SET_PAYMENT_METHODS";
+export const SET_STAFF = "redux/organizationSetup/SET_STAFF";
+export const UPDATE_FIELD = "redux/organizationSetup/UPDATE_FIELD";
+export const RESET = "redux/organizationSetup/RESET";
+export const SET_CURRENT_STATION = "redux/organizationSetup/SET_CURRENT_STATION";
+export const SET_USERS = "redux/organizationSetup/newStaff/SET_USERS";
+export const SET_PERSON_ID = "redux/organizationSetup/newStaff/SET_PERSON_ID";
+export const SET_ROLE_ID = "redux/organizationSetup/newStaff/SET_ROLE_ID";
+export const SET_ROLES_DROPDOWN_DATA = "redux/organizationSetup/newStaff/SET_ROLES_DROPDOWN_DATA";
+// export const CLEAR_NEW_STAFF = "redux/organizationSetup/newStaff/CLEAR_NEW_STAFF";

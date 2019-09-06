@@ -8,12 +8,12 @@
  */
 
 import React from "react";
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { newOrganizationCompletionMessage } from "../../constants/messages";
 
-console.log(newOrganizationCompletionMessage)
+// console.log( newOrganizationCompletionMessage );
 
-const NewOrganizationComplete = props => {
+const NewOrganizationComplete = () => {
 
   return (
     <div>
@@ -21,7 +21,7 @@ const NewOrganizationComplete = props => {
       <Link to="/app/account"><button>Back to Account</button></Link>
       <Link to="/app/hq"><button>To Organization HQ</button></Link>
     </div>
-  )
+  );
 };
 
 export default NewOrganizationComplete;

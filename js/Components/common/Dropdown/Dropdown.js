@@ -14,11 +14,11 @@ const Dropdown = props => {
       options={ props.options }
       className={ cssClasses }
     />
-  )
+  );
 };
 
 Dropdown.defaultProps = {
-  options: [ { key: 0, text: 'No options provided', value: 'No options provided' } ],
+  options: [ { key: 0, text: "No options provided", value: "No options provided" } ],
   selection: false,
 };
 

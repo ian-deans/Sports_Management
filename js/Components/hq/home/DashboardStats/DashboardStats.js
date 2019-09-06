@@ -1,7 +1,10 @@
+//! This needs to be moved to the "containers" folder and have the sub components
+//! abstracted out.
+
 import React from "react";
 import { connect } from "react-redux";
 import { Statistic } from "semantic-ui-react";
-import { CircularIcon, Panel, SmallSpinner } from "../../../common";
+import { CircularIcon, Panel, } from "../../../common";
 import { getDashboardStats } from "../../../../actions/hq";
 
 
@@ -13,11 +16,11 @@ class DashboardStats extends React.Component {
 
   componentDidMount() {
     this.init();
-  };
+  }
 
   init = async () => {
     await this.props.getDashboardStats();
-    this.setState({ loading: false })
+    this.setState( { loading: false } );
   }
 
   render() {
@@ -50,73 +53,68 @@ class DashboardStats extends React.Component {
     };
 
     return (
-      <Panel className={containerClasses.join(" ")}>
+      <Panel className={containerClasses.join( " " )}>
 
-        <div className={statClasses.join(" ")}>
+        <div className={statClasses.join( " " )}>
           <CircularIcon {...iconProps} color="green" name="shopping cart" />
           <Statistic {...statProps}>
-            <Statistic.Value>{formatLargeNumber(stats.total_registrations)}</Statistic.Value>
+            <Statistic.Value>{formatLargeNumber( stats.total_registrations )}</Statistic.Value>
             <Statistic.Label>Total Registrations</Statistic.Label>
           </Statistic>
         </div>
 
-        <div className={statClasses.join(" ")}>
+        <div className={statClasses.join( " " )}>
           <CircularIcon {...iconProps} color="purple" name="dollar" />
           <Statistic {...statProps}>
-            <Statistic.Value>${formatLargeNumber(stats.annual_income)}</Statistic.Value>
+            <Statistic.Value>${formatLargeNumber( stats.annual_income )}</Statistic.Value>
             <Statistic.Label>Annual Income</Statistic.Label>
           </Statistic>
         </div>
 
-        <div className={statClasses.join(" ")}>
+        <div className={statClasses.join( " " )}>
           <CircularIcon {...iconProps} color="blue" name="users" />
           <Statistic {...statProps}>
-            <Statistic.Value>{formatLargeNumber(stats.total_members)}</Statistic.Value>
+            <Statistic.Value>{formatLargeNumber( stats.total_members )}</Statistic.Value>
             <Statistic.Label>Total Members</Statistic.Label>
           </Statistic>
         </div>
 
-        <div className={statClasses.join(" ")}>
+        <div className={statClasses.join( " " )}>
           <CircularIcon {...iconProps} color="red" name="eye" />
           <Statistic {...statProps}>
-            <Statistic.Value>{formatLargeNumber(stats.active_programs)}</Statistic.Value>
+            <Statistic.Value>{formatLargeNumber( stats.active_programs )}</Statistic.Value>
             <Statistic.Label>Active Programs</Statistic.Label>
           </Statistic>
         </div>
 
       </Panel>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   stats: state.hq.root.dashboard_stats,
-});
+} );
 
 const mapDispatchToProps = {
   getDashboardStats,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardStats);
+export default connect( mapStateToProps, mapDispatchToProps )( DashboardStats );
 
 
-function formatLargeNumber(amount) {
-  if (!amount) {
+function formatLargeNumber( amount ) {
+  if ( !amount ) {
     return;
   }
 
 
-  let chars = amount.toString().split("");
+  let chars = amount.toString().split( "" );
   let final = [];
-  while(chars.length > 3) {
-    let a = chars.splice(chars.length - 3);
+  while( chars.length > 3 ) {
+    let a = chars.splice( chars.length - 3 );
     final = [",", ...a, ...final];
   }
   final = [...chars, ...final];
-  return final.join("");
-}
-
-
-function dividesBy3(number) {
-  return number % 3 === 0;
+  return final.join( "" );
 }

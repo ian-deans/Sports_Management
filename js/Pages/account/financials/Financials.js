@@ -1,15 +1,16 @@
-import React from 'react';
-import { NewPaymentMethod, SavedPaymentMethods } from "../../../Components/account/financials";
-import { PaymentHistory } from '../../../Components/account/financials';
+import React from "react";
+import { NewPaymentMethod, SavedPaymentMethods } from "../../../components/account/financials";
+import { PaymentHistory } from "../../../components/account/financials";
+import "./Financials.less";
 
-const Financials = props => {
+const Financials = () => {
   return (
     <div className="page account-financials">
       <div className="area-new-card">
-        <NewPaymentMethod />      
+        <NewPaymentMethod />
       </div>
       <div className="area-saved-cards">
-        <SavedPaymentMethods />    
+        <SavedPaymentMethods />
       </div>
       <div className="area-order-history">
         <PaymentHistory />

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { SmallSpinner } from "../../../../common";
+// import { SmallSpinner } from "../../../../common";
 
 class Review extends React.Component {
   state = {
@@ -9,23 +9,22 @@ class Review extends React.Component {
 
   componentDidMount() {
     this.init();
-  };
+  }
 
-  init = async () => {
+  init = () => {
     // this.setState({loading: false});
-    this.setState({loading: false});
+    this.setState( {loading: false} );
   };
 
   cart = () => {
     const {cart} = this.props;
-    return Object.keys(cart).map((key, i)=>{
+    return Object.keys( cart ).map( ( key, i ) => {
       return (
         <span key={i}>{`${key}: ${cart[key]} `}</span>
-      )
-    })
+      );
+    } );
   }
 
-  
 
   render() {
     const cart = this.cart();
@@ -34,12 +33,12 @@ class Review extends React.Component {
         <h2>Review / Submit Order</h2>
         {cart}
       </React.Fragment>
-    )
-  };
-};
+    );
+  }
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   cart: state.account.playerRegistration.cart,
-});
+} );
 
-export default connect(mapStateToProps)(Review);
+export default connect( mapStateToProps )( Review );

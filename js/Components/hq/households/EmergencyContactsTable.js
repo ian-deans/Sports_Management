@@ -3,26 +3,26 @@ import { connect } from "react-redux";
 import { TableContained } from "../../common";
 
 const headerItems = [];
-const columnData = new Map([
+const columnData = new Map( [
   ["Image", "field_name"],
   ["Name", "field_name"],
   ["Relationship", "field_name"],
   ["Email", "field_name"],
   ["Mobile", "field_name"]
-]);
+] );
 
-const EmergencyContactsTable = ({contacts}) => {
+const EmergencyContactsTable = ( {contacts} ) => {
   return (
-    <TableContained 
+    <TableContained
       header={headerItems}
       columns={columnData}
       rowData={contacts}
     />
-  )
+  );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   contacts: state.hq.households.contacts,
-});
+} );
 
-export default connect(mapStateToProps)(EmergencyContactsTable)
+export default connect( mapStateToProps )( EmergencyContactsTable );

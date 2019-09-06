@@ -1,0 +1,85 @@
+@import "../../config/style/variables.less";
+
+.section.hq {
+  .main {
+    width    : 100%;
+    padding  : 0;
+  }
+}
+
+.section.hq .page.hq {
+  &-home {
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows   : auto auto auto;
+    grid-gap             : @padding 0;
+    grid-template-areas  :
+      "stats stats"
+      "graph graph"
+      "registrations .";
+    justify-content: stretch;
+    align-items    : flex-start;
+
+    .area {
+      &-stats {
+        grid-area: stats;
+      }
+
+      &-graph {
+        grid-area: graph;
+      }
+
+      &-registrations {
+        grid-area: registrations;
+      }
+    }
+  }
+
+
+  // &-programs {}
+  &-households {
+    .area {
+      &-nav {
+        margin-bottom: @padding;
+      }
+
+      &-main {
+        .page.hq {
+          &-family-info {
+            display              : grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows   : max-content min-content min-content;
+            grid-gap             : @padding;
+            grid-template-areas  :
+              "info notes"
+              "members members"
+              "contacts contacts";
+            justify-items: stretch;
+            align-items  : stretch;
+
+            .area {
+              &-info {
+                grid-area: info;
+              }
+
+              &-notes {
+                grid-area: notes;
+              }
+
+              &-members {
+                grid-area: members;
+              }
+
+              &-contacts {
+                grid-area: contacts;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+
+}

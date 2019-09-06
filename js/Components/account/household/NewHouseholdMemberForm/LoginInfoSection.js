@@ -1,10 +1,11 @@
+/* eslint-disable camelcase */
 import React from "react";
-import { Grid, Form } from 'semantic-ui-react';
-import { Header } from '../../../common';
+import { Grid, Form } from "semantic-ui-react";
+import { Header } from "../../../common";
 
 class LoginInfoSection extends React.Component {
-  handleChange = (event, data) => {
-    this.props.handleChangeFn("loginData", data);
+  handleChange = ( event, data ) => {
+    this.props.handleChangeFn( "loginData", data );
   };
 
   render() {
@@ -38,7 +39,7 @@ class LoginInfoSection extends React.Component {
           </Form.Group>
 
           <Form.Group widths={3} className="buffer-top">
-            <Form.Checkbox 
+            <Form.Checkbox
               disabled={disabled}
               label="Send Invite"
               name="sendInvite"
@@ -50,6 +51,6 @@ class LoginInfoSection extends React.Component {
       </Grid.Row>
     );
   }
-};
+}
 
 export default LoginInfoSection;

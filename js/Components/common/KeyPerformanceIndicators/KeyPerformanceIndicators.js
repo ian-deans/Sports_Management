@@ -1,21 +1,21 @@
 import React from "react";
 import Chart from "chart.js";
-import { Grid } from 'semantic-ui-react';
+import { Grid } from "semantic-ui-react";
 import { Panel } from "..";
-import ChartLink from './ChartLink';
+import ChartLink from "./ChartLink";
 
 import { indicatorsData, chartData } from "./config";
 
 
-const _arrayOfIndicators = (indicatorsData, clickFn, currentTab) =>
-  indicatorsData.map((indicatorData, i) => (
+const _arrayOfIndicators = ( indicatorsData, clickFn, currentTab ) =>
+  indicatorsData.map( ( indicatorData, i ) => (
     <ChartLink
-      key={i}
-      {...indicatorData}
-      active={indicatorData.label === currentTab}
-      handleClick={clickFn}
+      key={ i }
+      { ...indicatorData }
+      active={ indicatorData.label === currentTab }
+      handleClick={ clickFn }
     />
-  ));
+  ) );
 
 
 class KeyPerformanceIndicators extends React.Component {
@@ -25,20 +25,20 @@ class KeyPerformanceIndicators extends React.Component {
   };
 
   componentDidMount() {
-    this.changeChart(indicatorsData[0].data, indicatorsData[0].labels);
+    this.changeChart( indicatorsData[ 0 ].data, indicatorsData[ 0 ].labels );
   }
 
-  changeChart = (data, labels) => {
+  changeChart = ( data, labels ) => {
     let chartCanvas = this.refs.chart;
     let chartStuff = chartData( data, labels );
 
-    let chart = new Chart(chartCanvas, {
+    let chart = new Chart( chartCanvas, {
       type: "line",
       data: chartStuff.data,
       options: chartStuff.options
-    });
+    } );
 
-    this.setState({ chart });
+    this.setState( { chart } );
   };
 
 
@@ -64,7 +64,7 @@ class KeyPerformanceIndicators extends React.Component {
 
             <Grid.Column className="see_me">
               <div className="graph">
-                <canvas ref={"chart"} height={"300"} width={"690"} />
+                <canvas ref={ "chart" } height={ "300" } width={ "690" } />
               </div>
             </Grid.Column>
 

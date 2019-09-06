@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { TableContained } from "../../common";
 
 const headerItems = ["Members"];
-const columnData = new Map([
+const columnData = new Map( [
   ["Image", "profile_image_path"],
   ["Name", "full_name"],
   ["Type", "type"],
@@ -12,20 +12,20 @@ const columnData = new Map([
   ["ID", "id"],
   ["Email", "email"],
   ["Mobile", "mobile_number"]
-])
+] );
 
-const MembersTable = ({members}) => {
+const MembersTable = ( {members} ) => {
   return (
-    <TableContained 
+    <TableContained
       header={headerItems}
       columns={columnData}
       rowData={members}
     />
-  )
-}
+  );
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   members: state.hq.households.members,
-});
+} );
 
-export default connect(mapStateToProps)(MembersTable)
+export default connect( mapStateToProps )( MembersTable );

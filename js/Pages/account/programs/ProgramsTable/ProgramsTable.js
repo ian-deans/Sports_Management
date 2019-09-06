@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { TableContained } from '../../../../Components/common';
+import { TableContained } from "../../../../components/common";
 
 const headerItems = ["Programs"];
-const columnData = new Map([
+const columnData = new Map( [
   ["Organization", "logo"],
   ["Name", "org_name"],
   ["Program", "name"],
@@ -12,14 +12,14 @@ const columnData = new Map([
   ["Start Date", "start_date"],
   ["End Date", "end_date"],
   ["Price", ""],
-]);
-const viewButton = ({id}) => <Link to={`/app/account/programs/${id}/details`}>View</Link>;
-const rowExtras = [viewButton]
+] );
+const viewButton = ( {id} ) => <Link to={`/app/account/programs/${id}/details`}>View</Link>;
+const rowExtras = [viewButton];
 
 
-const ProgramsTable = ({ programs }) => {
+const ProgramsTable = ( { programs } ) => {
   return (
-    <TableContained 
+    <TableContained
       header={headerItems}
       columns={columnData}
       rowData={programs}
@@ -28,8 +28,8 @@ const ProgramsTable = ({ programs }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   programs: state.account.root.program_search_results,
-});
+} );
 
-export default connect(mapStateToProps)(ProgramsTable);
+export default connect( mapStateToProps )( ProgramsTable );

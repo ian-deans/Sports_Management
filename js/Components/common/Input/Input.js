@@ -1,22 +1,22 @@
-import React from 'react';
-import { Input as SInput } from 'semantic-ui-react';
+import React from "react";
+import { Input as SInput } from "semantic-ui-react";
 
-import { containsOnlyNumbers } from '../../../utilities';
+import { containsOnlyNumbers } from "../../../helpers/string";
 
 class Input extends React.Component {
 
   render() {
-    const cssClasses = 'cinch-input ' + (this.props.className ? this.props.className : '');
+    const cssClasses = "cinch-input " + ( this.props.className ? this.props.className : "" );
     return (
       <SInput
         { ...this.props }
         className={ cssClasses }
       />
-    )
-  };
+    );
+  }
 
   static ZipCode( props ) {
-    const cssClasses = 'cinch-input zipcode ' + (props.className ? props.className : '');
+    const cssClasses = "cinch-input zipcode " + ( props.className ? props.className : "" );
 
     const handleChange = ( event, data ) => {
       if ( _isValidZipCode( data.value ) ) {
@@ -30,7 +30,7 @@ class Input extends React.Component {
         className={ cssClasses }
         onChange={ handleChange }
       />
-    )
+    );
   }
 }
 

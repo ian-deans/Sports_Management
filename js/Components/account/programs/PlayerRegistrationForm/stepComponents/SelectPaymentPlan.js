@@ -4,7 +4,7 @@ import { Dropdown, Table } from "semantic-ui-react";
 import { SmallSpinner, AvatarImage } from "../../../../common";
 import ListItem from "../ListItem";
 
-import { formatCurrency } from "../../../../../utilities";
+import { formatCurrency } from "../../../../../helpers/string";
 
 import { getPaymentPlans, selectPaymentPlan } from "../../../../../actions/account/playerRegistration";
 
@@ -15,34 +15,35 @@ class SelectPaymentPlan extends React.Component {
 
   componentDidMount() {
     this.init();
-  };
+  }
 
   init = async () => {
     await this.props.getPaymentPlans();
-    this.setState({ loading: false });
+    this.setState( { loading: false } );
   };
 
-  handleSelect = (e, d) => {
-    this.props.selectPaymentPlan(d.value);
+  handleSelect = ( e, d ) => {
+    this.props.selectPaymentPlan( d.value );
   }
 
   paymentPlans = () => {
     const { paymentPlans, paymentPlanId } = this.props;
-    return paymentPlans.map(p => {
+    return paymentPlans.map( p => {
       const active = p.id === paymentPlanId;
       return (
         <ListItem key={p.id} active={active}>
           <span>{p.title}</span>
-          <button onClick={() => this.handleSelect(p.id)}>Select</button>
+          <button onClick={() => this.handleSelect( p.id )}>Select</button>
         </ListItem>
-      )
-    })
+      );
+    } );
   };
 
   items = () => {
-    const { player, division, paymentPlanId, paymentPlans } = this.props;
+    //TODO add paymentPlanId to destructured arguments below
+    const { player, division, paymentPlans } = this.props;
     const options = paymentPlans
-      .map(pp => ({key: pp.id, value: pp.id, text: pp.title}))
+      .map( pp => ( {key: pp.id, value: pp.id, text: pp.title} ) );
     return (
       <Table>
         <Table.Row>
@@ -75,12 +76,12 @@ class SelectPaymentPlan extends React.Component {
           </Table.Cell>
 
           <Table.Cell>
-            {formatCurrency(division.program_fee)}
+            {formatCurrency( division.program_fee )}
           </Table.Cell>
 
         </Table.Row>
       </Table>
-    )
+    );
   };
 
   render() {
@@ -90,23 +91,23 @@ class SelectPaymentPlan extends React.Component {
         <h2>Select Payment Plan</h2>
         {this.state.loading ? <SmallSpinner /> : items}
       </div>
-    )
-  };
-};
+    );
+  }
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   paymentPlans: state.account.playerRegistration.payment_plans,
   paymentPlanId: state.account.playerRegistration.payment_plan_id,
   player: state.account.playerRegistration.player,
   division: state.account.playerRegistration.division,
-});
+} );
 
 const mapDispatchToProps = {
   getPaymentPlans,
   selectPaymentPlan,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SelectPaymentPlan);
+export default connect( mapStateToProps, mapDispatchToProps )( SelectPaymentPlan );
 
 
 /**

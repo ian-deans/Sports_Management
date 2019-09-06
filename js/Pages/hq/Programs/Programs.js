@@ -1,14 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-// import { connect } from "react-redux";
-import { PageNotFound, PageNotAvailable } from "../../../Components/common";
+import { PageNotFound, PageNotAvailable } from "../../../components/common";
+import ProgramsTable from "../../../components/hq/programs/ProgramsTable";
 
-import ProgramsTable from "../../../Components/hq/programs/ProgramsTable";
-
-import { Grid } from "semantic-ui-react";
-
-
-const Programs = ( { match: { path } }) => {
+const Programs = ( { match: { path } } ) => {
   return (
     <div className="page hq-programs">
       <Switch>
@@ -17,7 +12,7 @@ const Programs = ( { match: { path } }) => {
         <Route component={ PageNotFound } />
       </Switch>
     </div>
-  )
+  );
 };
 
 export default Programs;

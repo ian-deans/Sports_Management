@@ -1,38 +1,35 @@
 import * as actions from "./types";
+import { dev } from "../../helpers/log";
 
 const BUSINESS_DETAILS = "BUSINESS_DETAILS";
 const LEGAL_REPRESENTATIVE = "LEGAL_REPRESENTATIVE";
 
 
-const updateBusinessDetails = payload => ({
+const updateBusinessDetails = payload => ( {
   type: actions.FORMS_BUSINESS_DETAILS_UPDATE_FIELD,
   payload,
-});
+} );
 
-const updateLegalRepresentative = payload => ({
+const updateLegalRepresentative = payload => ( {
   type: actions.FORMS_LEGAL_REPRESENTATIVE_UPDATE_FIELD,
   payload,
-});
+} );
 
-const updatePerson = payload => ({
-  type: actions.FORMS_PERSON_UPDATE_FIELD,
-  payload,
-});
+// const updatePerson = payload => ( {
+//   type: actions.FORMS_PERSON_UPDATE_FIELD,
+//   payload,
+// } );
 
-const resetAllFormStates = () => ({
+const resetAllFormStates = () => ( {
   type: actions.FORMS_RESET,
-})
+} );
 
 
-
-
-export const updateField = (formName, fieldName, value) =>
-  (dispatch, getState) => {
-
-    const payload = {[fieldName]: value};
+export const updateField = ( formName, ...payload ) =>
+  ( dispatch ) => {
     let actionCreator;
 
-    switch(formName) {
+    switch ( formName ) {
       case BUSINESS_DETAILS:
         actionCreator = updateBusinessDetails;
         break;
@@ -40,19 +37,19 @@ export const updateField = (formName, fieldName, value) =>
       case LEGAL_REPRESENTATIVE:
         actionCreator = updateLegalRepresentative;
         break;
-      
-      case PERSON:
-        actionCreator = updatePerson;
-        break;
+
+        // case PERSON:
+        //   actionCreator = updatePerson;
+        //   break;
 
       default:
-        console.warn("Form Actions: updateField: No match found for form name provided.", formName);
-    };
+        dev( "Form Actions: updateField: No match found for form name provided.", formName );
+    }
 
-    if (actionCreator) {
-      dispatch(actionCreator(payload));
-    };
-};
+    if ( actionCreator ) {
+      dispatch( actionCreator( payload ) );
+    }
+  };
 
 export const resetAllForms = () =>
-  async dispatch => dispatch(resetAllFormStates());
+  dispatch => dispatch( resetAllFormStates() );

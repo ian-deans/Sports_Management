@@ -1,4 +1,5 @@
-import * as actionTypes from '../actions/ui/types';
+/* eslint-disable camelcase */
+import * as actionTypes from "../actions/ui/types";
 
 const initialState = {
   us_states: undefined,

@@ -1,9 +1,7 @@
-import React from 'react';
-import { Grid } from 'semantic-ui-react';
-import DocumentsTable from "../../../Components/hq/households/DocumentsTable";
+import React from "react";
+import DocumentsTable from "../../../components/hq/households/DocumentsTable";
 
-const Documents = props => {
-
+const Documents = () => {
   return (
     <div className="page hq-family-documents">
       <DocumentsTable />

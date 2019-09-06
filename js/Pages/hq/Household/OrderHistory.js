@@ -1,9 +1,5 @@
-import React from 'react';
-import { Grid } from 'semantic-ui-react';
-import { Panel } from '../../../Components/common';
-
-import PaymentMethodsTable from "../../../Components/hq/households/PaymentMethodsTable";
-import OrdersTable from "../../../Components/hq/households/OrdersTable"
+import React from "react";
+import PaymentMethodsTable from "../../../components/hq/households/PaymentMethodsTable";
 
 const OrderHistory = () => {
   return (
@@ -12,6 +8,5 @@ const OrderHistory = () => {
     </div>
   );
 };
-
 
 export default OrderHistory;

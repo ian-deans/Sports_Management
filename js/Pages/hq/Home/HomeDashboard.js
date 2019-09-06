@@ -1,12 +1,12 @@
 import React from "react";
 import { Progress } from "semantic-ui-react";
-import DashboardStats from "../../../Components/hq/home/DashboardStats/DashboardStats";
+import { ErrorBoundary, KeyPerformanceIndicators, Panel } from "../../../components/common";
+import DashboardStats from "../../../components/hq/home/DashboardStats/DashboardStats";
 
-import {ErrorBoundary, KeyPerformanceIndicators, Panel } from "../../../Components/common";
 
-class HomeDashboard extends React.Component {
-  render() {
-    return (
+const HomeDashboard = () => {
+  return (
+    <ErrorBoundary>
       <div className="page hq-home">
         <div className="area-stats">
           <DashboardStats />
@@ -18,18 +18,15 @@ class HomeDashboard extends React.Component {
           <ProgramRegistrationsIndicators />
         </div>
       </div>
-    );
-  };
+    </ErrorBoundary>
+  );
 };
 
 export default HomeDashboard;
 
 
-
-
-/** To be abstracted out */
-
-const ProgramRegistrationsIndicators = props => (
+//TODO To be abstracted out
+const ProgramRegistrationsIndicators = () => (
   <Panel.Group className="program-registration-indicators">
     <Panel.Item>
       <h3>Current Program Registration Levels</h3>

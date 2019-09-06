@@ -1,5 +1,5 @@
-import React from 'react';
-import { Icon } from 'semantic-ui-react';
+import React from "react";
+import { Icon } from "semantic-ui-react";
 
 const PageNotFound = props => (
   <div className="cinch-404-error">
@@ -12,7 +12,7 @@ const PageNotFound = props => (
 );
 
 PageNotFound.defaultProps = {
-  location: 'No location prop passed to component'
+  location: "No location prop passed to component"
 };
 
 export default PageNotFound;

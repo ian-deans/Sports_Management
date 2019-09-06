@@ -11,17 +11,17 @@ class SelectHousehold extends React.Component {
     this.props.getHouseholdSelection();
   }
 
-  handleChange = async (event, data) => {
-    this.setState({loading: true});
-    if (this.props.current) {
-      if (data.value !== this.props.current.id) {
-        return this.props.selectHousehold(data.value);
+  handleChange = async ( event, data ) => {
+    this.setState( {loading: true} );
+    if ( this.props.current ) {
+      if ( data.value !== this.props.current.id ) {
+        return this.props.selectHousehold( data.value );
       } else {
         return;
       }
     }
-    await this.props.selectHousehold(data.value);
-    return this.setState({loading: false})
+    await this.props.selectHousehold( data.value );
+    return this.setState( {loading: false} );
 
   }
 
@@ -42,18 +42,18 @@ class SelectHousehold extends React.Component {
         scrolling
         closeOnBlur
       />
-    )
+    );
   }
-};
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   selection: state.hq.households.selection,
   info: state.hq.households.info,
-});
+} );
 
 const mapDispatchToProps = {
   getHouseholdSelection,
   selectHousehold,
 };
 
-export default connect(mapStateToProps,  mapDispatchToProps)(SelectHousehold);
+export default connect( mapStateToProps,  mapDispatchToProps )( SelectHousehold );

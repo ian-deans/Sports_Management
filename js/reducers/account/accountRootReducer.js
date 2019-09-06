@@ -1,5 +1,6 @@
-import * as appActions from '../../actions/app/types'
-import * as accountActions from '../../actions/account/types';
+/* eslint-disable camelcase */
+import * as appActions from "../../actions/app/types";
+import * as accountActions from "../../actions/account/types";
 
 const initialState = {
   household_data: null,
@@ -12,8 +13,8 @@ const initialState = {
   program_details: null,
 };
 
-const reducer = (state = initialState, action) => {
-  switch(action.type) {
+const reducer = ( state = initialState, action ) => {
+  switch( action.type ) {
 
     case appActions.SET_ACCOUNT:
       return {
@@ -23,19 +24,19 @@ const reducer = (state = initialState, action) => {
         household_members: action.payload.household_members,
         payment_methods: action.payload.payment_methods,
       };
-    
+
     case accountActions.SET_HOUSEHOLD_MEMBERS:
       return {
         ...state,
         household_members: action.payload.household_members,
       };
-    
+
     case accountActions.SET_PROGRAM_DETAILS:
       return {
         ...state,
         program_details: action.payload.program_details,
       };
-    
+
     case accountActions.UNSET_PROGRAM_DETAILS:
       return {
         ...state,
@@ -53,7 +54,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         program_search_results: [],
       };
-    
+
     case accountActions.SET_PAYMENT_METHODS:
       return {
         ...state,
@@ -63,7 +64,7 @@ const reducer = (state = initialState, action) => {
     default:
       return state;
 
-  };
+  }
 };
 
 export default reducer;

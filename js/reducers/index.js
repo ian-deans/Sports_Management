@@ -17,11 +17,11 @@ const allReducers = combineReducers( {
   // organizationSetup: organizationSetupReducer,
 } );
 
-const rootReducer = (state, action) => {
-  if (action.type === "RESET_APP") {
+const rootReducer = ( state, action ) => {
+  if ( action.type === "RESET_APP" ) {
     state = undefined;
   }
-  return allReducers(state, action);
-}
+  return allReducers( state, action );
+};
 
-export default rootReducer; 
+export default rootReducer;
